@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Field, reduxForm} from "redux-form";
 
 import {signIn} from "../actions";
+import history from "../history";
 import '../style/pages/SignIn.css';
 
 const formName = 'SIGN_IN';
@@ -13,6 +14,9 @@ const formFields = {
 };
 
 const SignIn = (props) => {
+    if (props.auth.isSigned) {
+        history.push('/');
+    }
     const createLabel = name => name.charAt(0) + name.substr(1).toLowerCase();
 
     const renderInput = ({input, meta, type}) => {
@@ -64,7 +68,8 @@ const formWrapped = reduxForm({
 
 const mapStateToProps = state => {
     return {
-        err: state.err
+        err: state.err,
+        auth: state.auth
     };
 };
 
