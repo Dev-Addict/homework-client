@@ -1,0 +1,25 @@
+:root {
+    --color-ghost-white: #F7F7FF;
+    --color-raisin-black: #262626;
+    --color-blue-green: #07A0C3;
+    --color-international-orange: #C44536;
+    --color-screamin-green: #5CF64A;
+    --color-middle-blue-green: #7DE2D1;
+    --color-jet: #2F2F2F;
+}
+
+@font-face {
+    font-family: sportage;
+    src: url("../fonts/sportage.otf");
+}
+
+@font-face {
+    font-family: "sportage italic";
+    src: url("../fonts/sportage-italic.otf");
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-raisin-black);
+}
