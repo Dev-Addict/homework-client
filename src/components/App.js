@@ -5,7 +5,7 @@ import Header from "./Header";
 import '../style/components/App.css';
 import Home from "../pages/Home";
 import Footer from "./Footer";
-import SignIn from "../style/pages/SignIn";
+import SignIn from "../pages/SignIn";
 import history from "../history";
 
 function App() {
