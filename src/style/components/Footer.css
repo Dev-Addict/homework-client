@@ -1,0 +1,17 @@
+.footer-container {
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--color-raisin-black);
+    width: 100%;
+    color: var(--color-ghost-white);
+    font-size: 18px;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: var(--color-middle-blue-green);
+    font-size: 26px;
+    font-family: sportage, serif;
+}
