@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Field, reduxForm} from "redux-form";
 
 import {signIn} from "../actions";
+import '../style/pages/SignIn.css';
 
 const formName = 'SIGN_IN';
 

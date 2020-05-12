@@ -1,8 +1,12 @@
-import {SIGN_IN, SIGN_OUT, ERROR} from "./types";
+import {SIGN_IN, SIGN_OUT, ERROR, SET_VIEW_STATE} from "./types";
 import homework from "../api/homework";
 import history from "../history";
 
 export const signIn = (username, password) => async dispatch => {
+    dispatch({
+        type: SET_VIEW_STATE,
+        payload: 'loading'
+    });
     try {
         const res = await homework.post(
             '/users/signin', {
@@ -18,9 +22,13 @@ export const signIn = (username, password) => async dispatch => {
     } catch (err) {
         dispatch({
             type: ERROR,
-            payload: err.message
+            payload: err.response.data.message
         });
     }
+    dispatch({
+        type: SET_VIEW_STATE,
+        payload: 'ready'
+    });
 };
 
 export const signOut = () => ({

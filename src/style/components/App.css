@@ -6,6 +6,9 @@
     --color-screamin-green: #5CF64A;
     --color-middle-blue-green: #7DE2D1;
     --color-jet: #2F2F2F;
+    --color-jet-transparent: #2F2F2F88;
+    --color-imperial-red: #EF233C;
+    --color-blue-green-transparent: #07A0C388;
 }
 
 @font-face {
@@ -23,4 +26,5 @@ html, body {
     background-color: var(--color-middle-blue-green);
     overflow-x: hidden;
     padding: 35px 0 0;
+    height: 100% !important;
 }

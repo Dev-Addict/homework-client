@@ -7,11 +7,13 @@ import Home from "../pages/Home";
 import Footer from "./Footer";
 import SignIn from "../pages/SignIn";
 import history from "../history";
+import Loading from "./Loading";
 
 function App() {
     return (
         <Router history={history}>
             <div className="App">
+                <Loading/>
                 <Header/>
                 <Switch>
                     <Route path="/" exact>
