@@ -17,7 +17,7 @@ export const signIn = (username, password) => async dispatch => {
         dispatch({
             type: ERROR,
             payload: err
-        })
+        });
     }
 };
 
