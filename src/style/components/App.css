@@ -19,7 +19,8 @@
 }
 
 html, body {
-    padding: 0;
     margin: 0;
-    background-color: var(--color-raisin-black);
+    background-color: var(--color-middle-blue-green);
+    overflow-x: hidden;
+    padding: 35px 0 0;
 }
