@@ -3,8 +3,19 @@ import {connect} from 'react-redux';
 
 import UserForm, {formFields} from "../components/UserForm";
 import {createUser} from "../actions";
+import history from "../history";
 
 const CreateUser = props => {
+    if (!props.auth.isSigned) {
+        history.push('/');
+        return (<div/>);
+    }
+
+    if (['teacher', 'student'].includes(props.auth.data.user.rote)) {
+        history.push('/dashboard');
+        return (<div/>);
+    }
+
     const onSubmit = formValues => {
         props.createUser({
             username: formValues[formFields.username],
@@ -16,8 +27,14 @@ const CreateUser = props => {
     };
 
     return (
-        <UserForm onSubmit={(onSubmit)}/>
+        <UserForm onSubmit={(onSubmit)} rote={props.auth.data.user.rote}/>
     );
 };
 
-export default connect(null, {createUser})(CreateUser)
+const mapStateToProps = state => {
+    return {
+        auth: state.auth
+    };
+};
+
+export default connect(mapStateToProps, {createUser})(CreateUser);

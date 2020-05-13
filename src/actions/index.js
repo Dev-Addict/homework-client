@@ -72,7 +72,6 @@ export const createUser = (user) => async (dispatch, getState) => {
             payload: res.data.data.doc
         });
     } catch (err) {
-        console.log(err);
         dispatch({
             type: ERROR,
             payload: err.response.data.message
@@ -82,4 +81,5 @@ export const createUser = (user) => async (dispatch, getState) => {
         type: SET_VIEW_STATE,
         payload: 'ready'
     });
+    history.push('/dashboard');
 };
