@@ -16,6 +16,7 @@ const formFields = {
 const SignIn = (props) => {
     if (props.auth.isSigned) {
         history.push('/');
+        return (<div/>);
     }
     const createLabel = name => name.charAt(0) + name.substr(1).toLowerCase();
 

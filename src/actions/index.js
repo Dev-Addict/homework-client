@@ -18,7 +18,7 @@ export const signIn = (username, password) => async dispatch => {
             type: SIGN_IN,
             payload: res.data
         });
-        history.push('/');
+        history.push('/dashboard');
     } catch (err) {
         dispatch({
             type: ERROR,
