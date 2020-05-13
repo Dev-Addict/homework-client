@@ -6,6 +6,7 @@ import Loading from "./Loading";
 import Header from "./Header";
 import SignIn from "../pages/SignIn";
 import Home from "../pages/Home";
+import CreateUser from "../pages/CreateUser";
 import Dashboard from "../pages/Dashboard";
 import history from "../history";
 import '../style/components/App.css';
@@ -25,6 +26,9 @@ function App() {
                     </Route>
                     <Route path="/dashboard" exact>
                         <Dashboard/>
+                    </Route>
+                    <Route path="/create" exact>
+                        <CreateUser/>
                     </Route>
                 </Switch>
                 <Footer/>

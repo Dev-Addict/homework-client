@@ -58,19 +58,21 @@ export const getUsers = () => async dispatch => {
     });
 };
 
-export const createUser = (user) => async dispatch => {
+export const createUser = (user) => async (dispatch, getState) => {
     dispatch({
         type: SET_VIEW_STATE,
         payload: 'loading'
     });
     try {
-        const res = await homework.post('/users', {...user});
+        const res = await homework.post('/users', {...user}, {
+            headers: { Authorization: getState().auth.token }
+        });
         dispatch({
             type: CREATE_USER,
             payload: res.data.data.doc
         });
-        console.log(res.data.data.doc);
     } catch (err) {
+        console.log(err);
         dispatch({
             type: ERROR,
             payload: err.response.data.message
