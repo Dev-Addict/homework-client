@@ -7,6 +7,7 @@
     --color-middle-blue-green: #7DE2D1;
     --color-jet: #2F2F2F;
     --color-jet-transparent: #2F2F2F88;
+    --color-jet-transparent-low: #2F2F2F55;
     --color-imperial-red: #EF233C;
     --color-blue-green-transparent: #07A0C388;
 }
@@ -19,6 +20,16 @@
 @font-face {
     font-family: "sportage italic";
     src: url("../fonts/sportage-italic.otf");
+}
+
+@font-face {
+    font-family: "maxwell leonard";
+    src: url("../fonts/maxwell-leonard-regular.ttf");
+}
+
+@font-face {
+    font-family: "maxwell leonard outline";
+    src: url("../fonts/maxwell-leonard-outline.ttf");
 }
 
 html, body {

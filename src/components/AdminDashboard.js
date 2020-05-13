@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 
+import UsersList from "./UsersList";
 import {getUsers} from "../actions";
 
 const AdminDashboard = props => {
@@ -9,7 +10,7 @@ const AdminDashboard = props => {
     }, []);
     return (
         <div>
-            AdminDashboard
+            <UsersList/>
         </div>
     );
 };
