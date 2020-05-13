@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 import '../style/components/UsersList.css';
 
@@ -11,7 +12,11 @@ const UsersList = props => {
             <td>{user.name}</td>
             <td>{user.username}</td>
             <td>{user.manager}</td>
-            <td>Actions</td>
+            <td>
+                <Link to={`/edit/${user._id}`}>
+                    <button>edit</button>
+                </Link>
+            </td>
         </tr>
     ));
 

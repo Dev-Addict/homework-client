@@ -34,14 +34,17 @@ const UserForm = props => {
                     props.rote === 'admin' ?
                         <Fragment>
                             <input {...input} className="sign-in-radio-input" type="radio" name="rote"
-                                   value="school-manager" checked/>
+                                   value="school-manager"
+                                   checked={!props.initialValues || props.initialValues[formFields.rote] === 'school-manager'}/>
                             <label htmlFor="school-manager">School Manager</label><br/>
                         </Fragment> :
                         <Fragment/>
                 }
-                <input {...input} className="sign-in-radio-input" type="radio" name="rote" value="teacher"/>
+                <input {...input} className="sign-in-radio-input" type="radio" name="rote" value="teacher"
+                       checked={props.initialValues[formFields.rote] === 'teacher'}/>
                 <label htmlFor="teacher">Teacher</label><br/>
-                <input {...input} className="sign-in-radio-input" type="radio" name="rote" value="student"/>
+                <input {...input} className="sign-in-radio-input" type="radio" name="rote" value="student"
+                       checked={props.initialValues[formFields.rote] === 'student'}/>
                 <label htmlFor="student">Student</label><br/>
                 <div className="sign-in-input-error">{meta.touched && !meta.active ? meta.error : ''}</div>
             </div>
