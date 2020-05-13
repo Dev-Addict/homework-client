@@ -1,4 +1,4 @@
-import {SIGN_IN, SIGN_OUT, ERROR, SET_VIEW_STATE, GET_USERS} from "./types";
+import {SIGN_IN, SIGN_OUT, ERROR, SET_VIEW_STATE, GET_USERS, CREATE_USER} from "./types";
 import homework from "../api/homework";
 import history from "../history";
 
@@ -46,6 +46,30 @@ export const getUsers = () => async dispatch => {
             type: GET_USERS,
             payload: res.data.data.docs
         });
+    } catch (err) {
+        dispatch({
+            type: ERROR,
+            payload: err.response.data.message
+        });
+    }
+    dispatch({
+        type: SET_VIEW_STATE,
+        payload: 'ready'
+    });
+};
+
+export const createUser = (user) => async dispatch => {
+    dispatch({
+        type: SET_VIEW_STATE,
+        payload: 'loading'
+    });
+    try {
+        const res = await homework.post('/users', {...user});
+        dispatch({
+            type: CREATE_USER,
+            payload: res.data.data.doc
+        });
+        console.log(res.data.data.doc);
     } catch (err) {
         dispatch({
             type: ERROR,

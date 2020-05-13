@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 
 import UsersList from "./UsersList";
+import AdminButtons from "./AdminButtons";
 import {getUsers} from "../actions";
 
 const AdminDashboard = props => {
@@ -10,6 +11,7 @@ const AdminDashboard = props => {
     }, []);
     return (
         <div>
+            <AdminButtons/>
             <UsersList/>
         </div>
     );

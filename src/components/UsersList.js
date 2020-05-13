@@ -36,16 +36,6 @@ const UsersList = props => {
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                     {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
-                    {renderUsers}
                     </tbody>
                 </table>
             </div>
