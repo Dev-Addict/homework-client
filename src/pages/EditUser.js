@@ -53,14 +53,15 @@ const EditUser = props => {
     initialValues[formFields.name] = user.name;
 
     return (
-        <UserForm onSubmit={onSubmit} rote={props.auth.data.user.rote} initialValues={initialValues}/>
+        <UserForm onSubmit={onSubmit} rote={props.auth.data.user.rote} initialValues={initialValues} err={props.err}/>
     );
 };
 
 const mapStateToProps = state => {
     return {
         users: state.users,
-        auth: state.auth
+        auth: state.auth,
+        err: state.err
     };
 };
 

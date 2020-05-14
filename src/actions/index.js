@@ -71,6 +71,7 @@ export const createUser = (user) => async (dispatch, getState) => {
             type: CREATE_USER,
             payload: res.data.data.doc
         });
+        history.push('/dashboard');
     } catch (err) {
         dispatch({
             type: ERROR,
@@ -81,7 +82,6 @@ export const createUser = (user) => async (dispatch, getState) => {
         type: SET_VIEW_STATE,
         payload: 'ready'
     });
-    history.push('/dashboard');
 };
 
 export const updateUser = (user, id) => async (dispatch, getState) => {
@@ -97,6 +97,7 @@ export const updateUser = (user, id) => async (dispatch, getState) => {
             type: UPDATE_USER,
             payload: res.data.data.doc
         });
+        history.push('/dashboard');
     } catch (err) {
         dispatch({
             type: ERROR,
@@ -107,5 +108,4 @@ export const updateUser = (user, id) => async (dispatch, getState) => {
         type: SET_VIEW_STATE,
         payload: 'ready'
     });
-    history.push('/dashboard');
 };

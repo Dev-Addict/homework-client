@@ -57,6 +57,7 @@ const UserForm = props => {
                 <Field name={formFields.rote} component={renderRoteSelector}/>
                 <Field name={formFields.password} component={renderInput} type="password"/>
             </div>
+            <div className="sign-in-error">{props.err || ''}</div>
             <button type="submit" className="user-form-submit-button">submit</button>
         </form>
     );

@@ -27,13 +27,14 @@ const CreateUser = props => {
     };
 
     return (
-        <UserForm onSubmit={(onSubmit)} rote={props.auth.data.user.rote} initialValues={{}}/>
+        <UserForm onSubmit={(onSubmit)} rote={props.auth.data.user.rote} initialValues={{}} err={props.err}/>
     );
 };
 
 const mapStateToProps = state => {
     return {
-        auth: state.auth
+        auth: state.auth,
+        err: state.err
     };
 };
 
