@@ -11,3 +11,5 @@ export const GET_USERS = 'get users';
 export const CREATE_USER = 'create user';
 
 export const UPDATE_USER = 'update user';
+
+export const DELETE_USER = 'delete user';

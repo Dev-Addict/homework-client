@@ -1,11 +1,10 @@
-import {ERROR, SIGN_OUT, SIGN_IN} from "../actions/types";
+import {ERROR, SIGN_OUT, SIGN_IN, GET_USERS, CREATE_USER, UPDATE_USER} from "../actions/types";
 
 export default (state = '', action) => {
     if (action.type === ERROR) {
         return action.payload;
-    } else if (action.type === SIGN_IN) {
-        return '';
-    } else if (action.type === SIGN_OUT) {
+    } else if (action.type === SIGN_IN || action.type === SIGN_OUT || action.type === GET_USERS ||
+        action.type === CREATE_USER || action.type === UPDATE_USER) {
         return '';
     }
     return state;
