@@ -1,4 +1,4 @@
-.user-form-form {
+.school-form-form {
     background-color: var(--color-jet-transparent);
     padding: 50px;
     display: inline-block;
@@ -12,17 +12,17 @@
     width: 300px;
 }
 
-.user-form-inputs-container {
+.school-form-inputs-container {
     margin-bottom: 20px;
 }
 
-.user-form-error {
+.school-form-error {
     font-size: 16px;
     color: var(--color-imperial-red);
     margin-bottom: 16px;
 }
 
-.user-form-submit-button {
+.school-form-submit-button {
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
@@ -34,7 +34,7 @@
     transition-duration: 200ms;
 }
 
-.user-form-submit-button:hover {
+.school-form-submit-button:hover {
     background-color: var(--color-blue-green);
     transform: scale(1.2);
 }
