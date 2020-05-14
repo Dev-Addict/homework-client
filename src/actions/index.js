@@ -1,4 +1,4 @@
-import {SIGN_IN, SIGN_OUT, ERROR, SET_VIEW_STATE, GET_USERS, CREATE_USER} from "./types";
+import {SIGN_IN, SIGN_OUT, ERROR, SET_VIEW_STATE, GET_USERS, CREATE_USER, UPDATE_USER} from "./types";
 import homework from "../api/homework";
 import history from "../history";
 
@@ -71,6 +71,32 @@ export const createUser = (user) => async (dispatch, getState) => {
             type: CREATE_USER,
             payload: res.data.data.doc
         });
+    } catch (err) {
+        dispatch({
+            type: ERROR,
+            payload: err.response.data.message
+        });
+    }
+    dispatch({
+        type: SET_VIEW_STATE,
+        payload: 'ready'
+    });
+    history.push('/dashboard');
+};
+
+export const updateUser = (user, id) => async (dispatch, getState) => {
+    dispatch({
+        type: SET_VIEW_STATE,
+        payload: 'loading'
+    });
+    try {
+        const res = await homework.patch(`/users/${id}`, {...user}, {
+            headers: { Authorization: getState().auth.token }
+        });
+        dispatch({
+            type: UPDATE_USER,
+            payload: res.data.doc
+        })
     } catch (err) {
         dispatch({
             type: ERROR,

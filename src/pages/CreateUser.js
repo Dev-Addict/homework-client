@@ -27,7 +27,7 @@ const CreateUser = props => {
     };
 
     return (
-        <UserForm onSubmit={(onSubmit)} rote={props.auth.data.user.rote}/>
+        <UserForm onSubmit={(onSubmit)} rote={props.auth.data.user.rote} initialValues={{}}/>
     );
 };
 

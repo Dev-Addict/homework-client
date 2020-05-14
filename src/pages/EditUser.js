@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import UserForm, {formFields} from "../components/UserForm";
-import {getUsers} from "../actions";
+import {getUsers, updateUser} from "../actions";
 import history from "../history";
 
 const EditUser = props => {
@@ -43,7 +43,7 @@ const EditUser = props => {
             rote: formValues[formFields.rote],
             manager: formValues[formFields.manager],
             name: formValues[formFields.name]
-        });
+        }, id);
     };
 
     const initialValues = {};
@@ -64,4 +64,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {getUsers})(EditUser);
+export default connect(mapStateToProps, {getUsers, updateUser})(EditUser);
