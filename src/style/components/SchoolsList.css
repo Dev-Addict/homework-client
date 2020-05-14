@@ -1,0 +1,69 @@
+.schools-list-container {
+    width: 80%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-ghost-white);
+}
+
+.schools-list-header {
+    font-family: "maxwell leonard", serif;
+    font-size: 36px;
+    text-align: center;
+}
+
+.schools-list-table-header-container {
+    background-color: var(--color-jet-transparent);
+}
+
+.schools-list-table-body-container {
+    background-color: var(--color-jet-transparent-low);
+    margin-top: 0;
+    border: 1px solid var(--color-jet-transparent);
+}
+
+.schools-list-table-header-container th {
+    padding: 20px 15px;
+    text-align: left;
+    font-size: 14px;
+    color: var(--color-ghost-white);
+    text-transform: uppercase;
+    width: 16.6%;
+}
+
+.schools-list-table-body-container td {
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    color: var(--color-ghost-white);
+    border-bottom: solid 1px var(--color-jet-transparent-low);
+    width: 16.6%;
+}
+
+.schools-list-table-header-container table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.schools-list-table-body-container table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.schools-list-icon {
+    color: var(--color-ghost-white);
+    opacity: 0.7 !important;
+}
+
+.schools-list-icon:hover {
+    opacity: 1 !important;
+}
+
+.schools-list-danger-icon {
+    color: var(--color-international-orange);
+    opacity: 0.7 !important;
+}
+
+.schools-list-danger-icon:hover {
+    opacity: 1 !important;
+}
