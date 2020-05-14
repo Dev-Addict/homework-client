@@ -18,11 +18,11 @@ const CreateUser = props => {
 
     const onSubmit = formValues => {
         props.createUser({
-            username: formValues[formFields.username],
-            password: formValues[formFields.password],
-            rote: formValues[formFields.rote],
-            manager: formValues[formFields.manager],
-            name: formValues[formFields.name]
+            username: formValues[formFields.username] || undefined,
+            password: formValues[formFields.password] || undefined,
+            rote: formValues[formFields.rote] || undefined,
+            manager: formValues[formFields.manager] || undefined,
+            name: formValues[formFields.name] || undefined
         });
     };
 

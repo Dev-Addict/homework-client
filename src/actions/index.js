@@ -95,8 +95,8 @@ export const updateUser = (user, id) => async (dispatch, getState) => {
         });
         dispatch({
             type: UPDATE_USER,
-            payload: res.data.doc
-        })
+            payload: res.data.data.doc
+        });
     } catch (err) {
         dispatch({
             type: ERROR,
