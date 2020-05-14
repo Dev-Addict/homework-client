@@ -8,7 +8,8 @@ import {
     UPDATE_USER,
     DELETE_USER,
     GET_SCHOOLS,
-    CREATE_SCHOOL
+    CREATE_SCHOOL,
+    UPDATE_SCHOOL
 } from "./types";
 import homework from "../api/homework";
 import history from "../history";
@@ -122,4 +123,17 @@ export const createSchool = school => async (dispatch, getState) => {
         });
         history.push('/dashboard');
     }, dispatch)
+};
+
+export const updateSchools = (school, id) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.patch(`/schools/${id}`, {...school}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: UPDATE_SCHOOL,
+            payload: res.data.data.doc
+        });
+        history.push('/dashboard');
+    }, dispatch);
 };
