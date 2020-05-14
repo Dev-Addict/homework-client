@@ -19,3 +19,5 @@ export const GET_SCHOOLS = 'get schools';
 export const CREATE_SCHOOL = 'create school';
 
 export const UPDATE_SCHOOL = 'update school';
+
+export const DELETE_SCHOOL = 'delete school';
