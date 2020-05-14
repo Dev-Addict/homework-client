@@ -14,7 +14,7 @@ const Dashboard = props => {
     }
     const components = {
         admin: <AdminDashboard/>,
-        manager: <ManagerDashboard/>,
+        'school-manager': <ManagerDashboard/>,
         teacher: <TeacherDashboard/>,
         student: <StudentDashboard/>
     };
