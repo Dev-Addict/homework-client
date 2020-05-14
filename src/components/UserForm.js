@@ -1,6 +1,7 @@
 import React, {Fragment} from "react";
 import {Field, reduxForm} from "redux-form";
 
+import Input from "./Input";
 import '../style/components/UserForm.css';
 
 const formName = 'USER_FORM';
@@ -14,17 +15,6 @@ export const formFields = {
 };
 
 const UserForm = props => {
-    const createLabel = name => name.charAt(0) + name.substr(1).toLowerCase();
-
-    const renderInput = ({input, meta, type}) => {
-        return (
-            <div>
-                <label className="sign-in-input-label">{createLabel(input.name)}</label>
-                <input {...input} className="sign-in-input" placeholder={createLabel(input.name)} type={type}/>
-                <div className="sign-in-input-error">{meta.touched && !meta.active ? meta.error : ''}</div>
-            </div>
-        );
-    };
 
     const renderRoteSelector = ({input, meta}) => {
         return (
@@ -51,11 +41,11 @@ const UserForm = props => {
     return (
         <form className="user-form-form" onSubmit={props.handleSubmit(props.onSubmit)}>
             <div className="user-form-inputs-container">
-                <Field name={formFields.name} component={renderInput} type="text"/>
-                <Field name={formFields.username} component={renderInput} type="text"/>
-                <Field name={formFields.manager} component={renderInput} type="text"/>
+                <Field name={formFields.name} component={Input} type="text"/>
+                <Field name={formFields.username} component={Input} type="text"/>
+                <Field name={formFields.manager} component={Input} type="text"/>
                 <Field name={formFields.rote} component={renderRoteSelector}/>
-                <Field name={formFields.password} component={renderInput} type="password"/>
+                <Field name={formFields.password} component={Input} type="password"/>
             </div>
             <div className="sign-in-error">{props.err || ''}</div>
             <button type="submit" className="user-form-submit-button">submit</button>

@@ -1,0 +1,24 @@
+.input-input-label {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+.input-input::placeholder {
+    color: var(--color-ghost-white);
+}
+
+.input-input:focus {
+    background-color: var(--color-jet);
+    transform: translateX(-50%) scale(1.1);
+}
+
+.input-input:hover {
+    background-color: var(--color-jet);
+}
+.input-input-error {
+    color: var(--color-imperial-red);
+    font-size: 16px;
+}

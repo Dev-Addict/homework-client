@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import CreateUser from "../pages/CreateUser";
 import EditUser from "../pages/EditUser";
 import Dashboard from "../pages/Dashboard";
+import CreateSchool from '../pages/CreateSchool';
 import history from "../history";
 import '../style/components/App.css';
 
@@ -33,6 +34,9 @@ function App() {
                     </Route>
                     <Route path="/edit/:id" exact>
                         <EditUser/>
+                    </Route>
+                    <Route path="/create-school" exact>
+                        <CreateSchool/>
                     </Route>
                 </Switch>
                 <Footer/>

@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from 'react-redux';
 import {Field, reduxForm} from "redux-form";
 
+import Input from "../components/Input";
 import {signIn} from "../actions";
 import history from "../history";
 import '../style/pages/SignIn.css';
@@ -18,17 +19,6 @@ const SignIn = (props) => {
         history.push('/');
         return (<div/>);
     }
-    const createLabel = name => name.charAt(0) + name.substr(1).toLowerCase();
-
-    const renderInput = ({input, meta, type}) => {
-        return (
-            <div>
-                <label className="sign-in-input-label">{createLabel(input.name)}</label>
-                <input {...input} className="sign-in-input" placeholder={createLabel(input.name)} type={type}/>
-                <div className="sign-in-input-error">{meta.touched && !meta.active ? meta.error : ''}</div>
-            </div>
-        );
-    };
 
     const onSubmit = (formValues) => {
         props.signIn(formValues[formFields.username], formValues[formFields.password]);
@@ -37,8 +27,8 @@ const SignIn = (props) => {
     return (
         <form className="sign-in-form" onSubmit={props.handleSubmit(onSubmit)}>
             <div className="sign-in-inputs-container">
-                <Field name={formFields.username} component={renderInput} type="text"/>
-                <Field name={formFields.password} component={renderInput} type="password"/>
+                <Field name={formFields.username} component={Input} type="text"/>
+                <Field name={formFields.password} component={Input} type="password"/>
             </div>
             <div className="sign-in-error">{props.err}</div>
             <button type="submit" className="sign-in-submit-button">submit</button>
