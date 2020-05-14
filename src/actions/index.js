@@ -116,7 +116,7 @@ export const deleteUser = id => async (dispatch, getState) => {
         payload: 'loading'
     });
     try {
-        const res = await homework.delete(`/users/${id}`, {}, {
+        await homework.delete(`/users/${id}`, {
             headers: { Authorization: getState().auth.token }
         });
         dispatch({

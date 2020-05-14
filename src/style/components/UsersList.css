@@ -58,3 +58,12 @@
 .users-list-icon:hover {
     opacity: 1 !important;
 }
+
+.users-list-danger-icon {
+    color: var(--color-international-orange);
+    opacity: 0.7 !important;
+}
+
+.users-list-danger-icon:hover {
+    opacity: 1 !important;
+}

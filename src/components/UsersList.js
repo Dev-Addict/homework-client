@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
+import {deleteUser} from "../actions";
 import '../style/components/UsersList.css';
 
 const UsersList = props => {
@@ -16,6 +17,7 @@ const UsersList = props => {
                 <Link to={`/edit/${user._id}`}>
                     <i className="edit outline icon users-list-icon"/>
                 </Link>
+                <i className="trash alternate outline icon users-list-danger-icon" onClick={event => props.deleteUser(user._id)}/>
             </td>
         </tr>
     ));
@@ -54,4 +56,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(UsersList);
+export default connect(mapStateToProps, {deleteUser})(UsersList);
