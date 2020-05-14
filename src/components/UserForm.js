@@ -10,7 +10,6 @@ export const formFields = {
     username: 'USERNAME',
     password: 'PASSWORD',
     rote: 'ROTE',
-    manager: 'MANAGER',
     name: 'NAME'
 };
 
@@ -43,7 +42,6 @@ const UserForm = props => {
             <div className="user-form-inputs-container">
                 <Field name={formFields.name} component={Input} type="text"/>
                 <Field name={formFields.username} component={Input} type="text"/>
-                <Field name={formFields.manager} component={Input} type="text"/>
                 <Field name={formFields.rote} component={renderRoteSelector}/>
                 <Field name={formFields.password} component={Input} type="password"/>
             </div>

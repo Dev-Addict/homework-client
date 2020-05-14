@@ -41,7 +41,6 @@ const EditUser = props => {
             username: formValues[formFields.username] || undefined,
             password: formValues[formFields.password] || undefined,
             rote: formValues[formFields.rote] || undefined,
-            manager: formValues[formFields.manager] || undefined,
             name: formValues[formFields.name] || undefined
         }, id);
     };

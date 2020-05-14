@@ -2,7 +2,7 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 
 import Input from "./Input";
-import '../style/components/SchoolForm.css.css';
+import '../style/components/SchoolForm.css';
 
 const formName = 'SCHOOL_FORM';
 

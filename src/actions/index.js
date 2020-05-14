@@ -7,6 +7,7 @@ import {
     CREATE_USER,
     UPDATE_USER,
     DELETE_USER,
+    GET_SCHOOLS,
     CREATE_SCHOOL
 } from "./types";
 import homework from "../api/homework";
@@ -98,6 +99,16 @@ export const deleteUser = id => async (dispatch, getState) => {
         });
         history.push('/dashboard');
     }, dispatch);
+};
+
+export const getSchools = () => async dispatch => {
+    await createRequest(async () => {
+        const res = await homework.get('/schools');
+        dispatch({
+            type: GET_SCHOOLS,
+            payload: res.data.data.docs
+        });
+    }, dispatch)
 };
 
 export const createSchool = school => async (dispatch, getState) => {

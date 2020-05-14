@@ -14,4 +14,6 @@ export const UPDATE_USER = 'update user';
 
 export const DELETE_USER = 'delete user';
 
+export const GET_SCHOOLS = 'get schools';
+
 export const CREATE_SCHOOL = 'create school';
