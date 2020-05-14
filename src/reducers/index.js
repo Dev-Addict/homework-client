@@ -5,11 +5,13 @@ import errorReducer from "./errorReducer";
 import authReducer from "./authReducer";
 import viewStateReducer from "./viewStateReducer";
 import usersReducer from "./usersReducer";
+import schoolsReducer from "./schoolsReducer";
 
 export default combineReducers({
     err: errorReducer,
     auth: authReducer,
     viewState: viewStateReducer,
     users: usersReducer,
+    schools: schoolsReducer,
     form: formReducer
 });
