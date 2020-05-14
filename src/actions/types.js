@@ -13,3 +13,5 @@ export const CREATE_USER = 'create user';
 export const UPDATE_USER = 'update user';
 
 export const DELETE_USER = 'delete user';
+
+export const CREATE_SCHOOL = 'create school';
