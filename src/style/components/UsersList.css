@@ -49,3 +49,12 @@
     width: 100%;
     table-layout: fixed;
 }
+
+.users-list-icon {
+    color: var(--color-ghost-white);
+    opacity: 0.7 !important;
+}
+
+.users-list-icon:hover {
+    opacity: 1 !important;
+}

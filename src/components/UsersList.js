@@ -14,7 +14,7 @@ const UsersList = props => {
             <td>{user.manager}</td>
             <td>
                 <Link to={`/edit/${user._id}`}>
-                    <button>edit</button>
+                    <i className="edit outline icon users-list-icon"/>
                 </Link>
             </td>
         </tr>
