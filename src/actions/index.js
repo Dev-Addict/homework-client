@@ -12,12 +12,27 @@ import {
 import homework from "../api/homework";
 import history from "../history";
 
-export const signIn = (username, password) => async dispatch => {
+const createRequest = (fn, dispatch) => {
     dispatch({
         type: SET_VIEW_STATE,
         payload: 'loading'
     });
     try {
+        fn();
+    } catch (err) {
+        dispatch({
+            type: ERROR,
+            payload: err.response.data.message
+        });
+    }
+    dispatch({
+        type: SET_VIEW_STATE,
+        payload: 'ready'
+    });
+};
+
+export const signIn = (username, password) => async dispatch => {
+    await createRequest(async () => {
         const res = await homework.post(
             '/users/signin', {
                 username: username,
@@ -29,16 +44,7 @@ export const signIn = (username, password) => async dispatch => {
             payload: res.data
         });
         history.push('/dashboard');
-    } catch (err) {
-        dispatch({
-            type: ERROR,
-            payload: err.response.data.message
-        });
-    }
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'ready'
-    });
+    }, dispatch);
 };
 
 export const signOut = () => ({
@@ -46,34 +52,17 @@ export const signOut = () => ({
 });
 
 export const getUsers = () => async dispatch => {
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'loading'
-    });
-    try {
+    await createRequest(async () => {
         const res = await homework.get('/users');
         dispatch({
             type: GET_USERS,
             payload: res.data.data.docs
         });
-    } catch (err) {
-        dispatch({
-            type: ERROR,
-            payload: err.response.data.message
-        });
-    }
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'ready'
-    });
+    }, dispatch)
 };
 
 export const createUser = (user) => async (dispatch, getState) => {
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'loading'
-    });
-    try {
+    await createRequest(async () => {
         const res = await homework.post('/users', {...user}, {
             headers: {Authorization: getState().auth.token}
         });
@@ -82,24 +71,11 @@ export const createUser = (user) => async (dispatch, getState) => {
             payload: res.data.data.doc
         });
         history.push('/dashboard');
-    } catch (err) {
-        dispatch({
-            type: ERROR,
-            payload: err.response.data.message
-        });
-    }
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'ready'
-    });
+    }, dispatch)
 };
 
 export const updateUser = (user, id) => async (dispatch, getState) => {
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'loading'
-    });
-    try {
+    await createRequest(async () => {
         const res = await homework.patch(`/users/${id}`, {...user}, {
             headers: {Authorization: getState().auth.token}
         });
@@ -108,24 +84,11 @@ export const updateUser = (user, id) => async (dispatch, getState) => {
             payload: res.data.data.doc
         });
         history.push('/dashboard');
-    } catch (err) {
-        dispatch({
-            type: ERROR,
-            payload: err.response.data.message
-        });
-    }
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'ready'
-    });
+    }, dispatch);
 };
 
 export const deleteUser = id => async (dispatch, getState) => {
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'loading'
-    });
-    try {
+    await createRequest(async () => {
         await homework.delete(`/users/${id}`, {
             headers: {Authorization: getState().auth.token}
         });
@@ -134,24 +97,11 @@ export const deleteUser = id => async (dispatch, getState) => {
             payload: id
         });
         history.push('/dashboard');
-    } catch (err) {
-        dispatch({
-            type: ERROR,
-            payload: err.response.data.message
-        });
-    }
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'ready'
-    });
+    }, dispatch);
 };
 
 export const createSchool = school => async (dispatch, getState) => {
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'loading'
-    });
-    try {
+    await createRequest(async () => {
         const res = await homework.post('/schools', {...school}, {
             headers: {Authorization: getState().auth.token}
         });
@@ -160,14 +110,5 @@ export const createSchool = school => async (dispatch, getState) => {
             payload: res.data.data.doc
         });
         history.push('/dashboard');
-    } catch (err) {
-        dispatch({
-            type: ERROR,
-            payload: err.response.data.message
-        });
-    }
-    dispatch({
-        type: SET_VIEW_STATE,
-        payload: 'ready'
-    });
+    }, dispatch)
 };
