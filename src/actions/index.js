@@ -202,3 +202,25 @@ export const deleteGrade = id => async (dispatch, getState) => {
         history.push('/dashboard');
     }, dispatch);
 };
+
+export const createGradeAndSave = (schoolId, grade) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const schoolRes = await homework.get(`/schools/${schoolId}`);
+        const gradeRes = await homework.post('/grades', {...grade}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: CREATE_GRADE,
+            payload: gradeRes.data.data.doc
+        });
+        const school = schoolRes.data.data.doc;
+        school.grades.push(gradeRes.data.data.doc._id);
+        const res = await homework.patch(`/schools/${schoolId}`, {...school}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: UPDATE_SCHOOL,
+            payload: res.data.data.doc
+        });
+    }, dispatch)
+};
