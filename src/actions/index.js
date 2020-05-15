@@ -218,6 +218,7 @@ export const createGradeAndSave = (schoolId, grade) => async (dispatch, getState
         const res = await homework.patch(`/schools/${schoolId}`, {...school}, {
             headers: {Authorization: getState().auth.token}
         });
+        history.push(`/school/${schoolId}`);
         dispatch({
             type: UPDATE_SCHOOL,
             payload: res.data.data.doc

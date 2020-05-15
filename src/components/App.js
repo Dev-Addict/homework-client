@@ -14,6 +14,7 @@ import EditSchool from "../pages/EditSchool";
 import SchoolInfo from '../pages/SchoolInfo';
 import history from "../history";
 import '../style/components/App.css';
+import CreateGrade from "../pages/CreateGrade";
 
 function App() {
     return (
@@ -45,6 +46,9 @@ function App() {
                     </Route>
                     <Route path="/school/:id" exact>
                         <SchoolInfo/>
+                    </Route>
+                    <Route path="/create-grade/:school" exact>
+                        <CreateGrade/>
                     </Route>
                 </Switch>
                 <Footer/>

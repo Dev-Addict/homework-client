@@ -7,7 +7,7 @@ import '../style/components/SchoolButtons.css';
 const AdminButtons = props => {
     return (
         <div>
-            <Link to="/">
+            <Link to={`/create-grade/${props.id}`}>
                 <button className="school-buttons-button">create Grade</button>
             </Link>
         </div>

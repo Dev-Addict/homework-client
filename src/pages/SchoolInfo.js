@@ -40,7 +40,7 @@ const SchoolInfo = props => {
     return (
         <div className="school-info-container">
             <h2 className="school-info-header">{school.name}<sub>({school._id})</sub></h2>
-            <SchoolButtons/>
+            <SchoolButtons id={school._id}/>
         </div>
     );
 };
