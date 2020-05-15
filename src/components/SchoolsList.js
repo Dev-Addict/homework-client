@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {deleteSchool} from "../actions";
 import '../style/components/SchoolsList.css';
 
-const UsersList = props => {
+const SchoolsList = props => {
     const renderSchools = props.schools.map(school => (
         <tr>
             <td>{school._id}</td>
@@ -56,4 +56,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {deleteSchool})(UsersList);
+export default connect(mapStateToProps, {deleteSchool})(SchoolsList);
