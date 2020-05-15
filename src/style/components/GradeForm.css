@@ -1,0 +1,40 @@
+.grade-form-form {
+    background-color: var(--color-jet-transparent);
+    padding: 50px;
+    display: inline-block;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    margin-bottom: 50px;
+    color: var(--color-ghost-white);
+    width: 300px;
+}
+
+.grade-form-inputs-container {
+    margin-bottom: 20px;
+}
+
+.grade-form-error {
+    font-size: 16px;
+    color: var(--color-imperial-red);
+    margin-bottom: 16px;
+}
+
+.grade-form-submit-button {
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: var(--color-blue-green-transparent);
+    color: var(--color-ghost-white);
+    cursor: pointer;
+    transition: all;
+    transition-duration: 200ms;
+}
+
+.grade-form-submit-button:hover {
+    background-color: var(--color-blue-green);
+    transform: scale(1.2);
+}
