@@ -10,9 +10,10 @@ import CreateUser from "../pages/CreateUser";
 import EditUser from "../pages/EditUser";
 import Dashboard from "../pages/Dashboard";
 import CreateSchool from '../pages/CreateSchool';
+import EditSchool from "../pages/EditSchool";
+import SchoolInfo from '../pages/SchoolInfo';
 import history from "../history";
 import '../style/components/App.css';
-import EditSchool from "../pages/EditSchool";
 
 function App() {
     return (
@@ -41,6 +42,9 @@ function App() {
                     </Route>
                     <Route path="/edit-school/:id" exact>
                         <EditSchool/>
+                    </Route>
+                    <Route path="/school/:id" exact>
+                        <SchoolInfo/>
                     </Route>
                 </Switch>
                 <Footer/>
