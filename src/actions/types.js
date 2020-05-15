@@ -25,3 +25,5 @@ export const DELETE_SCHOOL = 'delete school';
 export const GET_GRADES = 'get grades';
 
 export const CREATE_GRADE = 'create grade';
+
+export const UPDATE_GRADE = 'update grade';

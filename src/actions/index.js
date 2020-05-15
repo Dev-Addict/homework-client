@@ -12,7 +12,8 @@ import {
     UPDATE_SCHOOL,
     DELETE_SCHOOL,
     GET_GRADES,
-    CREATE_GRADE
+    CREATE_GRADE,
+    UPDATE_GRADE
 } from "./types";
 import homework from "../api/homework";
 import history from "../history";
@@ -173,4 +174,17 @@ export const createGrade = grade => async (dispatch, getState) => {
         });
         history.push('/dashboard');
     }, dispatch)
+};
+
+export const updateGrade = (grade, id) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.patch(`/grades/${id}`, {...grade}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: UPDATE_GRADE,
+            payload: res.data.data.doc
+        });
+        history.push('/dashboard');
+    }, dispatch);
 };
