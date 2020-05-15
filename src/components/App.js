@@ -29,7 +29,7 @@ function App() {
                     <Route path="/dashboard" exact>
                         <Dashboard/>
                     </Route>
-                    <Route path="/create" exact>
+                    <Route path="/create/:rote" exact>
                         <CreateUser/>
                     </Route>
                     <Route path="/edit/:id" exact>

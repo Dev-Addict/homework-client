@@ -7,8 +7,8 @@ import '../style/components/AdminButtons.css';
 const AdminButtons = props => {
     return (
         <div>
-            <Link to="/create">
-                <button className="admin-buttons-button">create User</button>
+            <Link to="/create/school-manager">
+                <button className="admin-buttons-button">create Manager</button>
             </Link>
         </div>
     );

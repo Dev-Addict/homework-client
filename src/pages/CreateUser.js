@@ -1,11 +1,13 @@
 import React from "react";
 import {connect} from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import UserForm, {formFields} from "../components/UserForm";
 import {createUser} from "../actions";
 import history from "../history";
 
 const CreateUser = props => {
+    const {rote} = useParams();
     if (!props.auth.isSigned) {
         history.push('/');
         return (<div/>);
@@ -20,7 +22,7 @@ const CreateUser = props => {
         props.createUser({
             username: formValues[formFields.username] || undefined,
             password: formValues[formFields.password] || undefined,
-            rote: formValues[formFields.rote] || undefined,
+            rote: rote,
             name: formValues[formFields.name] || undefined
         });
     };
