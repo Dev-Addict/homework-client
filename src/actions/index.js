@@ -20,14 +20,12 @@ const createRequest = (fn, dispatch) => {
         type: SET_VIEW_STATE,
         payload: 'loading'
     });
-    try {
-        fn();
-    } catch (err) {
+    fn().catch(err => {
         dispatch({
             type: ERROR,
             payload: err.response.data.message
         });
-    }
+    });
     dispatch({
         type: SET_VIEW_STATE,
         payload: 'ready'
