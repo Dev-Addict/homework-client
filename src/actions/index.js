@@ -10,7 +10,8 @@ import {
     GET_SCHOOLS,
     CREATE_SCHOOL,
     UPDATE_SCHOOL,
-    DELETE_SCHOOL
+    DELETE_SCHOOL,
+    GET_GRADES
 } from "./types";
 import homework from "../api/homework";
 import history from "../history";
@@ -148,4 +149,14 @@ export const deleteSchool = id => async (dispatch, getState) => {
         });
         history.push('/dashboard');
     }, dispatch);
+};
+
+export const getGrades = () => async dispatch => {
+    await createRequest(async () => {
+        const res = await homework.get('/grades');
+        dispatch({
+            type: GET_GRADES,
+            payload: res.data.data.docs
+        });
+    }, dispatch)
 };
