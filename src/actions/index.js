@@ -13,7 +13,8 @@ import {
     DELETE_SCHOOL,
     GET_GRADES,
     CREATE_GRADE,
-    UPDATE_GRADE
+    UPDATE_GRADE,
+    DELETE_GRADE
 } from "./types";
 import homework from "../api/homework";
 import history from "../history";
@@ -184,6 +185,19 @@ export const updateGrade = (grade, id) => async (dispatch, getState) => {
         dispatch({
             type: UPDATE_GRADE,
             payload: res.data.data.doc
+        });
+        history.push('/dashboard');
+    }, dispatch);
+};
+
+export const deleteGrade = id => async (dispatch, getState) => {
+    await createRequest(async () => {
+        await homework.delete(`/grades/${id}`, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: DELETE_GRADE,
+            payload: id
         });
         history.push('/dashboard');
     }, dispatch);
