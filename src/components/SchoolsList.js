@@ -12,7 +12,7 @@ const UsersList = props => {
             <td>{school.name}</td>
             <td>{school.manager}</td>
             <td>
-                <Link to={`/edit/${school._id}`}>
+                <Link to={`/edit-school/${school._id}`}>
                     <i className="edit outline icon schools-list-icon"/>
                 </Link>
                 <i className="trash alternate outline icon schools-list-danger-icon" onClick={event => props.deleteSchool(school._id)}/>

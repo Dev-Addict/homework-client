@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {Field, reduxForm} from "redux-form";
 
 import Input from "./Input";

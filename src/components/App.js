@@ -12,6 +12,7 @@ import Dashboard from "../pages/Dashboard";
 import CreateSchool from '../pages/CreateSchool';
 import history from "../history";
 import '../style/components/App.css';
+import EditSchool from "../pages/EditSchool";
 
 function App() {
     return (
@@ -37,6 +38,9 @@ function App() {
                     </Route>
                     <Route path="/create-school" exact>
                         <CreateSchool/>
+                    </Route>
+                    <Route path="/edit-school/:id" exact>
+                        <EditSchool/>
                     </Route>
                 </Switch>
                 <Footer/>

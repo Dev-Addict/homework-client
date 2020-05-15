@@ -4,7 +4,6 @@ import {connect} from "react-redux";
 import SchoolForm, {formFields} from "../components/SchoolForm";
 import {createSchool} from "../actions";
 import history from "../history";
-import UserForm from "../components/UserForm";
 
 const CreateSchool = props => {
     if (!props.auth.isSigned) {
@@ -19,8 +18,7 @@ const CreateSchool = props => {
 
     const onSubmit = formValues => {
         props.createSchool({
-            name: formValues[formFields.name] || undefined,
-            manager: formValues[formFields.manager] || undefined
+            name: formValues[formFields.name] || undefined
         });
     };
 

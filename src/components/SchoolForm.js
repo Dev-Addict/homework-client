@@ -7,7 +7,6 @@ import '../style/components/SchoolForm.css';
 const formName = 'SCHOOL_FORM';
 
 export const formFields = {
-    manager: 'MANAGER',
     name: 'NAME'
 };
 
@@ -16,7 +15,6 @@ const SchoolForm = props => {
         <form className="school-form-form" onSubmit={props.handleSubmit(props.onSubmit)}>
             <div className="school-form-inputs-container">
                 <Field name={formFields.name} component={Input} type="text"/>
-                <Field name={formFields.manager} component={Input} type="text"/>
             </div>
             <div className="school-form-error">{props.err || ''}</div>
             <button type="submit" className="school-form-submit-button">submit</button>
