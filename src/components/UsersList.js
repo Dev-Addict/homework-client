@@ -51,8 +51,9 @@ const UsersList = props => {
 };
 
 const mapStateToProps = state => {
+    const users = state.users.filter(user => user.manager === state.auth.data.user._id);
     return {
-        users: state.users
+        users
     };
 };
 
