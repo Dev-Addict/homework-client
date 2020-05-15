@@ -6,6 +6,7 @@ import authReducer from "./authReducer";
 import viewStateReducer from "./viewStateReducer";
 import usersReducer from "./usersReducer";
 import schoolsReducer from "./schoolsReducer";
+import gradesReducer from "./gradesReducer";
 
 export default combineReducers({
     err: errorReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
     viewState: viewStateReducer,
     users: usersReducer,
     schools: schoolsReducer,
+    grades: gradesReducer,
     form: formReducer
 });
