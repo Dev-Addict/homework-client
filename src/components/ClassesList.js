@@ -16,7 +16,7 @@ const GradesList = props => {
             <td>{classData.name}</td>
             <td>{classData.manager}</td>
             <td>
-                <Link to={`/edit-grade/${classData._id}`}>
+                <Link to={`/edit-class/${classData._id}`}>
                     <i className="edit outline icon classes-list-icon"/>
                 </Link>
                 <i className="trash alternate outline icon classes-list-danger-icon"

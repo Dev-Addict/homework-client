@@ -16,6 +16,7 @@ import CreateGrade from "../pages/CreateGrade";
 import EditGrade from "../pages/EditGrade";
 import GradeInfo from "../pages/GradeInfo";
 import CreateClass from "../pages/CreateClass";
+import EditClass from "../pages/EditClass";
 import history from "../history";
 import '../style/components/App.css';
 
@@ -61,6 +62,9 @@ function App() {
                     </Route>
                     <Route path="/create-class/:grade" exact>
                         <CreateClass/>
+                    </Route>
+                    <Route path="/edit-class/:id" exact>
+                        <EditClass/>
                     </Route>
                 </Switch>
                 <Footer/>
