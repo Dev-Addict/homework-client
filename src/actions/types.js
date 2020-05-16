@@ -29,3 +29,11 @@ export const CREATE_GRADE = 'create grade';
 export const UPDATE_GRADE = 'update grade';
 
 export const DELETE_GRADE = 'delete grade';
+
+export const GET_CLASSES = 'get classes';
+
+export const CREATE_CLASS = 'create class';
+
+export const UPDATE_CLASS = 'update class';
+
+export const DELETE_CLASS = 'delete class';
