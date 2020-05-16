@@ -265,3 +265,16 @@ export const updateClass = (classData, id) => async (dispatch, getState) => {
         history.push('/dashboard');
     }, dispatch);
 };
+
+export const deleteClass = id => async (dispatch, getState) => {
+    await createRequest(async () => {
+        await homework.delete(`/classes/${id}`, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: DELETE_CLASS,
+            payload: id
+        });
+        history.push('/dashboard');
+    }, dispatch);
+};
