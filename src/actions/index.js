@@ -404,3 +404,16 @@ export const createHomework = homeworkData => async (dispatch, getState) => {
         history.goBack();
     }, dispatch)
 };
+
+export const updateHomework = (homeworkData, id) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.patch(`/homework/${id}`, {...homeworkData}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: UPDATE_HOMEWORK,
+            payload: res.data.data.doc
+        });
+        history.goBack();
+    }, dispatch);
+};
