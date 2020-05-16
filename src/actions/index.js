@@ -252,3 +252,16 @@ export const createClass = classData => async (dispatch, getState) => {
         history.push('/dashboard');
     }, dispatch)
 };
+
+export const updateClass = (classData, id) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.patch(`/classes/${id}`, {...classData}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: UPDATE_CLASS,
+            payload: res.data.data.doc
+        });
+        history.push('/dashboard');
+    }, dispatch);
+};
