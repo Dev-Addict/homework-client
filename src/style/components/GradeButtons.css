@@ -1,0 +1,18 @@
+.grade-buttons-button {
+    border: none;
+    background-color: var(--color-jet-transparent);
+    color: var(--color-ghost-white);
+    margin: 10px;
+    padding: 4px 16px;
+    font-family: sportage, serif;
+    font-size: 20px;
+    opacity: 0.7;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all;
+    transition-duration: 200ms;
+}
+
+.grade-buttons-button:hover {
+    opacity: 1;
+}
