@@ -22,17 +22,17 @@ const LessonForm = props => {
         const createLabel = name => name.charAt(0) + name.substr(1).toLowerCase();
 
         const handleTeachers = props.teachers.map(teacher => (
-            <option value={teacher._id}>{teacher.name}</option>
+            <option value={teacher._id} className="lesson-form-select-option">{teacher.name}</option>
         ));
 
         return (
             <div>
-                <label className="input-input-label">{createLabel(input.name)}</label>
+                <label className="lesson-form-input-label">{createLabel(input.name)}</label>
                 <select {...input} placeholder={createLabel(input.name)}>
                     <option className="lesson-form-select-option-first">Choose a teacher</option>
                     {handleTeachers}
                 </select>
-                <div className="input-input-error">{meta.touched && !meta.active ? meta.error : ''}</div>
+                <div className="lesson-form-input-error">{meta.touched && !meta.active ? meta.error : ''}</div>
             </div>
         );
     };
@@ -59,7 +59,7 @@ const mapStateToProps = state => {
     const teachers = [];
 
     state.users.forEach(user => {
-        if (user.manager === state.auth.data.user.manager && user.rote === 'teacher') {
+        if (user.manager === state.auth.data.user._id && user.rote === 'teacher') {
             teachers.push(user);
         }
     });
