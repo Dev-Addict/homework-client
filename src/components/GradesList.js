@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 import {deleteGrade, getGrades} from "../actions";
-import '../style/components/SchoolsList.css';
+import '../style/components/GradesList.css';
 
 const GradesList = props => {
     useEffect(() => {
@@ -16,22 +16,22 @@ const GradesList = props => {
             <td>{grade.name}</td>
             <td>{grade.manager}</td>
             <td>
-                <Link to={`/edit-school/${grade._id}`}>
-                    <i className="edit outline icon schools-list-icon"/>
+                <Link to={`/edit-grade/${grade._id}`}>
+                    <i className="edit outline icon grades-list-icon"/>
                 </Link>
-                <i className="trash alternate outline icon schools-list-danger-icon"
-                   onClick={event => props.deleteSchool(grade._id)}/>
+                <i className="trash alternate outline icon grades-list-danger-icon"
+                   onClick={event => props.deleteGrade(grade._id)}/>
                 <Link to={`/school/${grade._id}`}>
-                    <i className="info circle icon schools-list-icon"/>
+                    <i className="info circle icon grades-list-icon"/>
                 </Link>
             </td>
         </tr>
     ));
 
     return (
-        <div className="schools-list-container">
-            <div className="schools-list-header">Grades</div>
-            <div className="schools-list-table-header-container">
+        <div className="grades-list-container">
+            <div className="grades-list-header">Grades</div>
+            <div className="grades-list-table-header-container">
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <thead>
                     <tr>
@@ -43,7 +43,7 @@ const GradesList = props => {
                     </thead>
                 </table>
             </div>
-            <div className="schools-list-table-body-container">
+            <div className="grades-list-table-body-container">
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                     {renderSchools}

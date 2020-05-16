@@ -12,9 +12,10 @@ import Dashboard from "../pages/Dashboard";
 import CreateSchool from '../pages/CreateSchool';
 import EditSchool from "../pages/EditSchool";
 import SchoolInfo from '../pages/SchoolInfo';
+import CreateGrade from "../pages/CreateGrade";
+import EditGrade from "../pages/EditGrade";
 import history from "../history";
 import '../style/components/App.css';
-import CreateGrade from "../pages/CreateGrade";
 
 function App() {
     return (
@@ -49,6 +50,9 @@ function App() {
                     </Route>
                     <Route path="/create-grade/:school" exact>
                         <CreateGrade/>
+                    </Route>
+                    <Route path="/edit-grade/:id" exact>
+                        <EditGrade/>
                     </Route>
                 </Switch>
                 <Footer/>
