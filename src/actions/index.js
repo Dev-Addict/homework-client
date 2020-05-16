@@ -230,7 +230,7 @@ export const createGradeAndSave = (schoolId, grade) => async (dispatch, getState
     }, dispatch)
 };
 
-const getClasses = () => async dispatch => {
+export const getClasses = () => async dispatch => {
     await createRequest(async () => {
         const res = await homework.get('/classes');
         dispatch({
