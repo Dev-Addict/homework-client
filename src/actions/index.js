@@ -391,3 +391,16 @@ export const getHomework = () => async dispatch => {
         });
     }, dispatch)
 };
+
+export const createHomework = homeworkData => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.post('/homework', {...homeworkData}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: CREATE_HOMEWORK,
+            payload: res.data.data.doc
+        });
+        history.goBack();
+    }, dispatch)
+};
