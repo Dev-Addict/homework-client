@@ -341,3 +341,16 @@ export const updateLesson = (lesson, id) => async (dispatch, getState) => {
         history.push('/dashboard');
     }, dispatch);
 };
+
+export const deleteLesson = id => async (dispatch, getState) => {
+    await createRequest(async () => {
+        await homework.delete(`/lessons/${id}`, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: DELETE_LESSON,
+            payload: id
+        });
+        history.push('/dashboard');
+    }, dispatch);
+};
