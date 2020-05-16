@@ -7,6 +7,7 @@ import viewStateReducer from "./viewStateReducer";
 import usersReducer from "./usersReducer";
 import schoolsReducer from "./schoolsReducer";
 import gradesReducer from "./gradesReducer";
+import classesReducer from "./classesReducer";
 
 export default combineReducers({
     err: errorReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
     users: usersReducer,
     schools: schoolsReducer,
     grades: gradesReducer,
+    classes: classesReducer,
     form: formReducer
 });
