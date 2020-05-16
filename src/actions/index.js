@@ -354,3 +354,26 @@ export const deleteLesson = id => async (dispatch, getState) => {
         history.push('/dashboard');
     }, dispatch);
 };
+
+export const createLessonAndSave = (classId, lesson) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const classRes = await homework.get(`/classes/${classId}`);
+        const lessonRes = await homework.post('/lessons', {...lesson}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: CREATE_LESSON,
+            payload: lessonRes.data.data.doc
+        });
+        const classData = classRes.data.data.doc;
+        classData.lessons.push(lessonRes.data.data.doc._id);
+        const res = await homework.patch(`/classes/${classId}`, {...classData}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        history.push(`/dashboard`);
+        dispatch({
+            type: UPDATE_CLASS,
+            payload: res.data.data.doc
+        });
+    }, dispatch)
+};
