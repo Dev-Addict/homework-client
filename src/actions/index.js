@@ -375,5 +375,5 @@ export const createLessonAndSave = (classId, lesson) => async (dispatch, getStat
             type: UPDATE_CLASS,
             payload: res.data.data.doc
         });
-    }, dispatch)
+    }, dispatch);
 };
