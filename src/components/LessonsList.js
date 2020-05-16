@@ -10,10 +10,13 @@ const LessonsList = props => {
         props.getLessons();
     }, []);
 
+    const getUsername = id => props.users[props.users.findIndex(user => user._id === id)].username;
+
     const renderSchools = props.lessons.map(lesson => (
         <tr>
             <td>{lesson._id}</td>
             <td>{lesson.name}</td>
+            <td>{getUsername(lesson.teacher)}</td>
             <td>{lesson.manager}</td>
             <td>
                 <Link to={`/edit-lesson/${lesson._id}`}>
@@ -21,9 +24,6 @@ const LessonsList = props => {
                 </Link>
                 <i className="trash alternate outline icon lessons-list-danger-icon"
                    onClick={event => props.deleteLesson(lesson._id)}/>
-                <Link to={`/lesson/${lesson._id}`}>
-                    <i className="info circle icon lessons-list-icon"/>
-                </Link>
             </td>
         </tr>
     ));
@@ -37,6 +37,7 @@ const LessonsList = props => {
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
+                        <th>Teacher</th>
                         <th>Manager</th>
                         <th>Actions</th>
                     </tr>
@@ -78,7 +79,8 @@ const mapStateToProps = (state, props) => {
     });
 
     return {
-        lessons
+        lessons,
+        users: state.users
     };
 };
 

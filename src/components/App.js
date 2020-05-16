@@ -18,9 +18,10 @@ import GradeInfo from "../pages/GradeInfo";
 import CreateClass from "../pages/CreateClass";
 import EditClass from "../pages/EditClass";
 import ClassInfo from "../pages/ClassInfo";
+import CreateLesson from "../pages/CreateLesson";
+import EditLesson from "../pages/EditLesson";
 import history from "../history";
 import '../style/components/App.css';
-import CreateLesson from "../pages/CreateLesson";
 
 const App = () => {
     return (
@@ -73,6 +74,9 @@ const App = () => {
                     </Route>
                     <Route path="/create-lesson/:classId" exact>
                         <CreateLesson/>
+                    </Route>
+                    <Route path="/edit-lesson/:id" exact>
+                        <EditLesson/>
                     </Route>
                 </Switch>
                 <Footer/>
