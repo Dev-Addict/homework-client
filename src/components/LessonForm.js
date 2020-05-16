@@ -1,0 +1,69 @@
+import React from "react";
+import {Field, reduxForm, formValueSelector} from "redux-form";
+import {connect} from 'react-redux';
+
+import Input from "./Input";
+import '../style/components/LessonForm.css';
+
+const formName = 'LESSON_FORM';
+
+export const formFields = {
+    name: 'NAME',
+    teacher: 'TEACHER'
+};
+
+const LessonForm = props => {
+    const TeacherSelector = ({input, meta}) => {
+        const createLabel = name => name.charAt(0) + name.substr(1).toLowerCase();
+
+        const handleTeachers = props.teachers.map(teacher => (
+            <option value={teacher._id}>{teacher.name}</option>
+        ));
+
+        return (
+            <div>
+                <label className="input-input-label">{createLabel(input.name)}</label>
+                <select {...input} placeholder={createLabel(input.name)}>
+                    <option className="lesson-form-select-option-first">Choose a teacher</option>
+                    {handleTeachers}
+                </select>
+                <div className="input-input-error">{meta.touched && !meta.active ? meta.error : ''}</div>
+            </div>
+        );
+    };
+
+    return (
+        <form className="lesson-form-form" onSubmit={props.handleSubmit(props.onSubmit)}>
+            <div className="lesson-form-inputs-container">
+                <Field name={formFields.name} component={Input} type="text"/>
+                <Field name={formFields.teacher} component={TeacherSelector}/>
+            </div>
+            <div className="lesson-form-error">{props.err || ''}</div>
+            <button type="submit" className="lesson-form-submit-button">submit</button>
+        </form>
+    );
+};
+
+const formWrapped = reduxForm({
+    form: formName
+})(LessonForm);
+
+const selector = formValueSelector(formName);
+
+const mapStateToProps = state => {
+    const teachers = [];
+
+    state.users.forEach(user => {
+        if (user.manager === state.auth.data.user.manager && user.rote === 'teacher') {
+            teachers.push(user);
+        }
+    });
+
+    return {
+        [formFields.name + 'Value']: selector(state, formFields.name),
+        [formFields.teacher + 'Value']: selector(state, formFields.teacher),
+        teachers
+    }
+};
+
+export default connect(mapStateToProps)(formWrapped);
