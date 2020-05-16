@@ -17,11 +17,11 @@
     margin-bottom: 10px;
 }
 
-.teacher-dashboard-teacher-card:nth-child(odd) {
+.teacher-dashboard-teacher-card:nth-child(even) {
     float: right;
 }
 
-.teacher-dashboard-teacher-card:nth-child(even) {
+.teacher-dashboard-teacher-card:nth-child(odd) {
     float: left;
 }
 

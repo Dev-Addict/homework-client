@@ -45,3 +45,11 @@ export const CREATE_LESSON = 'create lesson';
 export const UPDATE_LESSON = 'update lesson';
 
 export const DELETE_LESSON = 'delete lesson';
+
+export const GET_HOMEWORK = 'get lessons';
+
+export const CREATE_HOMEWORK = 'create lesson';
+
+export const UPDATE_HOMEWORK = 'update lesson';
+
+export const DELETE_HOMEWORK = 'delete lesson';

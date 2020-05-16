@@ -22,7 +22,11 @@ import {
     GET_LESSONS,
     CREATE_LESSON,
     UPDATE_LESSON,
-    DELETE_LESSON
+    DELETE_LESSON,
+    GET_HOMEWORK,
+    CREATE_HOMEWORK,
+    UPDATE_HOMEWORK,
+    DELETE_HOMEWORK
 } from "./types";
 import homework from "../api/homework";
 import history from "../history";
@@ -376,4 +380,14 @@ export const createLessonAndSave = (classId, lesson) => async (dispatch, getStat
             payload: res.data.data.doc
         });
     }, dispatch);
+};
+
+export const getHomework = () => async dispatch => {
+    await createRequest(async () => {
+        const res = await homework.get('/homework');
+        dispatch({
+            type: GET_HOMEWORK,
+            payload: res.data.data.docs
+        });
+    }, dispatch)
 };
