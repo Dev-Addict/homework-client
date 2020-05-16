@@ -1,0 +1,36 @@
+.teacher-dashboard-container {
+    position: relative;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.teacher-dashboard-teacher-card {
+    display: inline-block;
+    background-color: var(--color-jet-transparent);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--color-ghost-white);
+    font-family: sportage, Serif;
+    font-size: 24px;
+    width: 42%;
+    margin-bottom: 10px;
+}
+
+.teacher-dashboard-teacher-card:nth-child(odd) {
+    float: right;
+}
+
+.teacher-dashboard-teacher-card:nth-child(even) {
+    float: left;
+}
+
+@media (max-width: 600px) {
+    .teacher-dashboard-teacher-card {
+        width: 100%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        float: none !important;
+    }
+}
