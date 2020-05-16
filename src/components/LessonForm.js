@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useLayoutEffect} from "react";
 import {Field, reduxForm, formValueSelector} from "redux-form";
 import {connect} from 'react-redux';
 
 import Input from "./Input";
+import {getUsers} from "../actions";
 import '../style/components/LessonForm.css';
 
 const formName = 'LESSON_FORM';
@@ -13,6 +14,10 @@ export const formFields = {
 };
 
 const LessonForm = props => {
+    useLayoutEffect(() => {
+        props.getUsers();
+    }, []);
+
     const TeacherSelector = ({input, meta}) => {
         const createLabel = name => name.charAt(0) + name.substr(1).toLowerCase();
 
@@ -66,4 +71,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(formWrapped);
+export default connect(mapStateToProps, {getUsers})(formWrapped);

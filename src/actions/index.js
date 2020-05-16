@@ -18,7 +18,11 @@ import {
     GET_CLASSES,
     CREATE_CLASS,
     UPDATE_CLASS,
-    DELETE_CLASS
+    DELETE_CLASS,
+    GET_LESSONS,
+    CREATE_LESSON,
+    UPDATE_LESSON,
+    DELETE_LESSON
 } from "./types";
 import homework from "../api/homework";
 import history from "../history";
@@ -298,6 +302,16 @@ export const createClassAndSave = (gradeId, classData) => async (dispatch, getSt
         dispatch({
             type: UPDATE_GRADE,
             payload: res.data.data.doc
+        });
+    }, dispatch)
+};
+
+export const getlessons = () => async dispatch => {
+    await createRequest(async () => {
+        const res = await homework.get('/lessons');
+        dispatch({
+            type: GET_LESSONS,
+            payload: res.data.data.docs
         });
     }, dispatch)
 };

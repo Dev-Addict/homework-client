@@ -37,3 +37,11 @@ export const CREATE_CLASS = 'create class';
 export const UPDATE_CLASS = 'update class';
 
 export const DELETE_CLASS = 'delete class';
+
+export const GET_LESSONS = 'get lessons';
+
+export const CREATE_LESSON = 'create lesson';
+
+export const UPDATE_LESSON = 'update lesson';
+
+export const DELETE_LESSON = 'delete lesson';
