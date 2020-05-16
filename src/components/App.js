@@ -15,6 +15,7 @@ import SchoolInfo from '../pages/SchoolInfo';
 import CreateGrade from "../pages/CreateGrade";
 import EditGrade from "../pages/EditGrade";
 import GradeInfo from "../pages/GradeInfo";
+import CreateClass from "../pages/CreateClass";
 import history from "../history";
 import '../style/components/App.css';
 
@@ -57,6 +58,9 @@ function App() {
                     </Route>
                     <Route path="/grade/:id" exact>
                         <GradeInfo/>
+                    </Route>
+                    <Route path="/create-class/:grade" exact>
+                        <CreateClass/>
                     </Route>
                 </Switch>
                 <Footer/>
