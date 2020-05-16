@@ -430,3 +430,26 @@ export const deleteHomework = id => async (dispatch, getState) => {
         history.goBack();
     }, dispatch);
 };
+
+export const createHomeWorkAndSave = (lessonId, homeworkData) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const lessonRes = await homework.get(`/lessons/${lessonId}`);
+        const homeworkRes = await homework.post('/homework', {...homeworkData}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: CREATE_HOMEWORK,
+            payload: homeworkRes.data.data.doc
+        });
+        const lesson = lessonRes.data.data.doc;
+        lesson.homework.push(homeworkRes.data.data.doc._id);
+        const res = await homework.patch(`/lessons/${lessonId}`, {...lesson}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        history.goBack();
+        dispatch({
+            type: UPDATE_LESSON,
+            payload: res.data.data.doc
+        });
+    }, dispatch);
+};
