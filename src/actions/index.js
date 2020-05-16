@@ -315,3 +315,16 @@ export const getlessons = () => async dispatch => {
         });
     }, dispatch)
 };
+
+export const createLesson = lesson => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.post('/lessons', {...lesson}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: CREATE_LESSON,
+            payload: res.data.data.doc
+        });
+        history.push('/dashboard');
+    }, dispatch)
+};
