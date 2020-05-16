@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import {getClasses, updateGrade} from "../actions";
 import ClassButtons from "../components/ClassButtons";
+import LessonsList from "../components/LessonsList";
 import history from "../history";
 import '../style/pages/GradeInfo.css';
 
@@ -41,6 +42,7 @@ const SchoolInfo = props => {
         <div className="grade-info-container">
             <h2 className="grade-info-header">{classData.name}<sub>({classData._id})</sub></h2>
             <ClassButtons id={classData._id}/>
+            <LessonsList classData={classData._id}/>
         </div>
     );
 };
