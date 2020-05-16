@@ -21,7 +21,7 @@ import ClassInfo from "../pages/ClassInfo";
 import history from "../history";
 import '../style/components/App.css';
 
-function App() {
+const App = () => {
     return (
         <Router history={history}>
             <div className="App">
@@ -75,6 +75,6 @@ function App() {
             </div>
         </Router>
     );
-}
+};
 
 export default App;

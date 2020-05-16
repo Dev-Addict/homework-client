@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import {getClasses, updateGrade} from "../actions";
+import ClassButtons from "../components/ClassButtons";
 import history from "../history";
 import '../style/pages/GradeInfo.css';
 
@@ -39,6 +40,7 @@ const SchoolInfo = props => {
     return (
         <div className="grade-info-container">
             <h2 className="grade-info-header">{classData.name}<sub>({classData._id})</sub></h2>
+            <ClassButtons id={classData._id}/>
         </div>
     );
 };
