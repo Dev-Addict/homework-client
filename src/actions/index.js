@@ -417,3 +417,16 @@ export const updateHomework = (homeworkData, id) => async (dispatch, getState) =
         history.goBack();
     }, dispatch);
 };
+
+export const deleteHomework = id => async (dispatch, getState) => {
+    await createRequest(async () => {
+        await homework.delete(`/homework/${id}`, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: DELETE_LESSON,
+            payload: id
+        });
+        history.goBack();
+    }, dispatch);
+};
