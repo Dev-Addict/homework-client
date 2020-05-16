@@ -22,6 +22,17 @@ const ClassForm = props => {
     );
 };
 
+const validate = formValues => {
+    const errors = {};
+
+    if (!formValues[formFields.name]) {
+        errors[formFields.name] = `You Must Enter Valid ${formFields.name}.`;
+    }
+
+    return errors;
+};
+
 export default reduxForm({
-    form: formName
+    form: formName,
+    validate
 })(ClassForm);

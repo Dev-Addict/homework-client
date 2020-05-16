@@ -14,7 +14,6 @@ export const formFields = {
 };
 
 const UserForm = props => {
-
     return (
         <form className="user-form-form" onSubmit={props.handleSubmit(props.onSubmit)}>
             <div className="user-form-inputs-container">
@@ -28,6 +27,27 @@ const UserForm = props => {
     );
 };
 
+const validate = formValues => {
+    const errors = {};
+
+    if (!formValues[formFields.name]) {
+        errors[formFields.name] = `You Must Enter Valid ${formFields.name}.`;
+    }
+
+    if (!formValues[formFields.password] ||
+        formValues[formFields.password].length < 8 ||
+        formValues[formFields.password].length > 100 ) {
+        errors[formFields.password] = `You Must Enter Valid ${formFields.password}.`;
+    }
+
+    if (!formValues[formFields.username]) {
+        errors[formFields.username] = `You Must Enter Valid ${formFields.username}.`;
+    }
+
+    return errors;
+};
+
 export default reduxForm({
-    form: formName
+    form: formName,
+    validate
 })(UserForm);

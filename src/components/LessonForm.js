@@ -29,7 +29,7 @@ const LessonForm = props => {
             <div>
                 <label className="lesson-form-input-label">{createLabel(input.name)}</label>
                 <select {...input} placeholder={createLabel(input.name)}>
-                    <option className="lesson-form-select-option-first">Choose a teacher</option>
+                    <option className="lesson-form-select-option-first" value="">Choose a teacher</option>
                     {handleTeachers}
                 </select>
                 <div className="lesson-form-input-error">{meta.touched && !meta.active ? meta.error : ''}</div>
@@ -49,8 +49,23 @@ const LessonForm = props => {
     );
 };
 
+const validate = formValues => {
+    const errors = {};
+
+    if (!formValues[formFields.name]) {
+        errors[formFields.name] = `You Must Enter Valid ${formFields.name}.`;
+    }
+
+    if (!formValues[formFields.teacher]) {
+        errors[formFields.teacher] = `You Must Enter Valid ${formFields.teacher}.`;
+    }
+
+    return errors;
+};
+
 const formWrapped = reduxForm({
-    form: formName
+    form: formName,
+    validate
 })(LessonForm);
 
 const selector = formValueSelector(formName);

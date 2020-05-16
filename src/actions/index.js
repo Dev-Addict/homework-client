@@ -83,7 +83,7 @@ export const createUser = (user) => async (dispatch, getState) => {
             type: CREATE_USER,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch)
 };
 
@@ -96,7 +96,7 @@ export const updateUser = (user, id) => async (dispatch, getState) => {
             type: UPDATE_USER,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -109,7 +109,7 @@ export const deleteUser = id => async (dispatch, getState) => {
             type: DELETE_USER,
             payload: id
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -132,7 +132,7 @@ export const createSchool = school => async (dispatch, getState) => {
             type: CREATE_SCHOOL,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch)
 };
 
@@ -145,7 +145,7 @@ export const updateSchool = (school, id) => async (dispatch, getState) => {
             type: UPDATE_SCHOOL,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -158,7 +158,7 @@ export const deleteSchool = id => async (dispatch, getState) => {
             type: DELETE_SCHOOL,
             payload: id
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -181,7 +181,7 @@ export const createGrade = grade => async (dispatch, getState) => {
             type: CREATE_GRADE,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch)
 };
 
@@ -194,7 +194,7 @@ export const updateGrade = (grade, id) => async (dispatch, getState) => {
             type: UPDATE_GRADE,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -207,7 +207,7 @@ export const deleteGrade = id => async (dispatch, getState) => {
             type: DELETE_GRADE,
             payload: id
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -253,7 +253,7 @@ export const createClass = classData => async (dispatch, getState) => {
             type: CREATE_CLASS,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch)
 };
 
@@ -266,7 +266,7 @@ export const updateClass = (classData, id) => async (dispatch, getState) => {
             type: UPDATE_CLASS,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -279,7 +279,7 @@ export const deleteClass = id => async (dispatch, getState) => {
             type: DELETE_CLASS,
             payload: id
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -298,7 +298,7 @@ export const createClassAndSave = (gradeId, classData) => async (dispatch, getSt
         const res = await homework.patch(`/grades/${gradeId}`, {...grade}, {
             headers: {Authorization: getState().auth.token}
         });
-        history.push(`/grade/${gradeId}`);
+        history.goBack();
         dispatch({
             type: UPDATE_GRADE,
             payload: res.data.data.doc
@@ -325,7 +325,7 @@ export const createLesson = lesson => async (dispatch, getState) => {
             type: CREATE_LESSON,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch)
 };
 
@@ -338,7 +338,7 @@ export const updateLesson = (lesson, id) => async (dispatch, getState) => {
             type: UPDATE_LESSON,
             payload: res.data.data.doc
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -351,7 +351,7 @@ export const deleteLesson = id => async (dispatch, getState) => {
             type: DELETE_LESSON,
             payload: id
         });
-        history.push('/dashboard');
+        history.goBack();
     }, dispatch);
 };
 
@@ -370,7 +370,7 @@ export const createLessonAndSave = (classId, lesson) => async (dispatch, getStat
         const res = await homework.patch(`/classes/${classId}`, {...classData}, {
             headers: {Authorization: getState().auth.token}
         });
-        history.push(`/dashboard`);
+        history.goBack();
         dispatch({
             type: UPDATE_CLASS,
             payload: res.data.data.doc
