@@ -21,7 +21,7 @@ const GradesList = props => {
                 </Link>
                 <i className="trash alternate outline icon classes-list-danger-icon"
                    onClick={event => props.deleteClass(classData._id)}/>
-                <Link to={`/grade/${classData._id}`}>
+                <Link to={`/class/${classData._id}`}>
                     <i className="info circle icon classes-list-icon"/>
                 </Link>
             </td>

@@ -17,6 +17,7 @@ import EditGrade from "../pages/EditGrade";
 import GradeInfo from "../pages/GradeInfo";
 import CreateClass from "../pages/CreateClass";
 import EditClass from "../pages/EditClass";
+import ClassInfo from "../pages/ClassInfo";
 import history from "../history";
 import '../style/components/App.css';
 
@@ -65,6 +66,9 @@ function App() {
                     </Route>
                     <Route path="/edit-class/:id" exact>
                         <EditClass/>
+                    </Route>
+                    <Route path="/class/:id" exact>
+                        <ClassInfo/>
                     </Route>
                 </Switch>
                 <Footer/>

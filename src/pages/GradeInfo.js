@@ -22,7 +22,7 @@ const SchoolInfo = props => {
     }
 
     if (props.grades.length === 0) {
-        props.grades();
+        props.getGrades();
     }
 
     let grade;
@@ -35,7 +35,7 @@ const SchoolInfo = props => {
     }
 
     if (!grade) {
-        return (<div>School doesn't exists.</div>)
+        return (<div>Grade doesn't exists.</div>)
     }
 
     return (
