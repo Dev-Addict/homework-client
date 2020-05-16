@@ -328,3 +328,16 @@ export const createLesson = lesson => async (dispatch, getState) => {
         history.push('/dashboard');
     }, dispatch)
 };
+
+export const updateLesson = (lesson, id) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.patch(`/lessons/${id}`, {...lesson}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: UPDATE_LESSON,
+            payload: res.data.data.doc
+        });
+        history.push('/dashboard');
+    }, dispatch);
+};
