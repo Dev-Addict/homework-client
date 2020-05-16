@@ -239,3 +239,16 @@ const getClasses = () => async dispatch => {
         });
     }, dispatch)
 };
+
+export const createClass = classData => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.post('/classes', {...classData}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: CREATE_CLASS,
+            payload: res.data.data.doc
+        });
+        history.push('/dashboard');
+    }, dispatch)
+};
