@@ -510,3 +510,15 @@ export const updateHomeworkAnswer = (homeworkAnswer, id) => async (dispatch, get
         history.goBack();
     }, dispatch);
 };
+
+export const deleteHomeworkAnswer = id => async (dispatch, getState) => {
+    await createRequest(async () => {
+        await homework.delete(`/homeworkAnswers/${id}`, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: DELETE_HOMEWORK_ANSWER,
+            payload: id
+        });
+    }, dispatch);
+};
