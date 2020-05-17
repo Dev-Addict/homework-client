@@ -17,8 +17,8 @@ const HomeworkList = props => {
         <tr>
             <td>{homework._id}</td>
             <td>{homework.description}</td>
-            <td>{homework.startAt}</td>
-            <td>{homework.endAt}</td>
+            <td>{new Date(homework.startAt + (new Date().getTimezoneOffset() * -60 * 1000)).toLocaleString()}</td>
+            <td>{new Date(homework.endAt + (new Date().getTimezoneOffset() * -60 * 1000)).toLocaleString()}</td>
             <td>{homework.sendAfter?'Yes':'No'}</td>
             <td>{getUsername(homework.teacher)}</td>
             <td>

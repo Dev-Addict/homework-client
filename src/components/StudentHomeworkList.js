@@ -34,27 +34,32 @@ const StudentHomeworkList = props => {
             }
         );
 
+        const startAt = homework.startAt + (new Date().getTimezoneOffset() * -60 * 1000);
+        const endAt = homework.endAt + (new Date().getTimezoneOffset() * -60 * 1000);
+
         return (
             <tr className={homeworkAnswer ? 'student-homework-list-done-tr' : ''}>
                 <td>{homework._id}</td>
                 <td>{homework.description}</td>
-                <td>{homework.startAt}</td>
-                <td>{homework.endAt}</td>
+                <td>{new Date(startAt).toLocaleString()}</td>
+                <td>{new Date(endAt).toLocaleString()}</td>
                 <td>{homework.sendAfter ? 'Yes' : 'No'}</td>
                 <td>{getUsername(homework.teacher)}</td>
                 <td>
                     {
-                        homeworkAnswer ?
-                            <Fragment>
-                                <Link to={`/edit-homework-answer/${homeworkAnswer._id}`}>
-                                    <i className="edit outline icon student-homework-list-icon"/>
+                        (!homework.sendAfter && endAt < Date.now()) || startAt > Date.now() ?
+                            <Fragment/> :
+                            homeworkAnswer ?
+                                <Fragment>
+                                    <Link to={`/edit-homework-answer/${homeworkAnswer._id}`}>
+                                        <i className="edit outline icon student-homework-list-icon"/>
+                                    </Link>
+                                    <i className="trash alternate outline icon student-homework-list-danger-icon"
+                                       onClick={() => props.deleteHomeworkAnswer(homeworkAnswer._id)}/>
+                                </Fragment> :
+                                <Link to={`/create-homework-answer/${homework._id}`}>
+                                    <i className="location arrow icon student-homework-list-icon"/>
                                 </Link>
-                                <i className="trash alternate outline icon student-homework-list-danger-icon"
-                                   onClick={() => props.deleteHomeworkAnswer(homeworkAnswer._id)}/>
-                            </Fragment> :
-                            <Link to={`/create-homework-answer/${homework._id}`}>
-                                <i className="location arrow icon student-homework-list-icon"/>
-                            </Link>
                     }
                 </td>
             </tr>
