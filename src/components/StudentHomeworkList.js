@@ -2,24 +2,26 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
-import {deleteHomework, getHomework, getUsers} from "../actions";
-import '../style/components/HomeworkList.css';
+import {deleteHomework, getHomework, getUsers, getClasses, getLessons} from "../actions";
+import '../style/components/StudentHomeworkList.css';
 
-const HomeworkList = props => {
+const StudentHomeworkList = props => {
     useEffect(() => {
         props.getHomework();
         props.getUsers();
+        props.getClasses();
+        props.getLessons();
     }, []);
 
     const getUsername = id => (props.users[props.users.findIndex(user => user._id === id)] || {}).username;
 
-    const renderSchools = props.homework.map(homework => (
+    const renderHomework = props.homework.map(homework => (
         <tr>
             <td>{homework._id}</td>
             <td>{homework.description}</td>
             <td>{homework.startAt}</td>
             <td>{homework.endAt}</td>
-            <td>{homework.sendAfter?'Yes':'No'}</td>
+            <td>{homework.sendAfter ? 'Yes' : 'No'}</td>
             <td>{getUsername(homework.teacher)}</td>
             <td>
                 <Link to={`/edit-homework/${homework._id}`}>
@@ -52,7 +54,7 @@ const HomeworkList = props => {
             <div className="homework-list-table-body-container">
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
-                    {renderSchools}
+                    {renderHomework}
                     </tbody>
                 </table>
             </div>
@@ -61,26 +63,30 @@ const HomeworkList = props => {
 };
 
 const mapStateToProps = (state, props) => {
-    let lesson;
+    let classData;
 
-    for(let i = 0; i < state.lessons.length; i++) {
-        if (state.lessons[i]._id === props.lesson) {
-            lesson = state.lessons[i];
-        }
+    if (!classData) {
+        return {
+            homework: []
+        };
     }
 
-    if (!lesson) {
-        return {
-            lessons: []
-        };
+    for (let i = 0; i < state.classes.length; i++) {
+        if (state.classes[i].students.includes(state.auth.data.user._id)) {
+            classData = state.classes[i];
+        }
     }
 
     const homework = [];
 
-    state.homework.forEach(homeworkD => {
-        if (lesson.homework.includes(homeworkD._id)) {
-            homework.push(homeworkD);
-        }
+    classData.lessons.forEach(lesson => {
+        lesson.homework.forEach(homeworkD => {
+            state.homework.forEach(homeworkD2 => {
+                if (homeworkD2._id === homeworkD) {
+                    homework.push(homeworkD2);
+                }
+            })
+        })
     });
 
     return {
@@ -89,4 +95,10 @@ const mapStateToProps = (state, props) => {
     };
 };
 
-export default connect(mapStateToProps, {deleteHomework, getHomework, getUsers})(HomeworkList);
+export default connect(mapStateToProps, {
+    deleteHomework,
+    getHomework,
+    getUsers,
+    getClasses,
+    getLessons
+})(StudentHomeworkList);

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import {getClasses, updateGrade} from "../actions";
 import ClassButtons from "../components/ClassButtons";
 import LessonsList from "../components/LessonsList";
+import AddStudent from "./AddStudent";
 import history from "../history";
 import '../style/pages/ClassInfo.css';
 
@@ -43,6 +44,7 @@ const ClassInfo = props => {
             <h2 className="class-info-header">{classData.name}<sub>({classData._id})</sub></h2>
             <ClassButtons id={classData._id}/>
             <LessonsList classData={classData._id}/>
+            <AddStudent classId={classData._id}/>
         </div>
     );
 };

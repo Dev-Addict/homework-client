@@ -1,11 +1,20 @@
 import React from "react";
+import {connect} from 'react-redux';
+
+import StudentHomeworkList from "./StudentHomeworkList";
+import '../style/components/StudentDashboard.css';
 
 const StudentDashboard = props => {
     return (
-        <div>
-            StudentDashboard
+        <div className="student-dashboard-container">
+            <StudentHomeworkList/>
         </div>
     );
 };
 
-export default StudentDashboard;
+const mapStateToProps = (state) => {
+    return {
+    };
+};
+
+export default connect(mapStateToProps)(StudentDashboard);

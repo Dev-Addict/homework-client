@@ -26,7 +26,8 @@ import {
     GET_HOMEWORK,
     CREATE_HOMEWORK,
     UPDATE_HOMEWORK,
-    DELETE_HOMEWORK
+    DELETE_HOMEWORK,
+    ADD_STUDENT
 } from "./types";
 import homework from "../api/homework";
 import history from "../history";
@@ -419,7 +420,7 @@ export const deleteHomework = id => async (dispatch, getState) => {
             headers: {Authorization: getState().auth.token}
         });
         dispatch({
-            type: DELETE_LESSON,
+            type: DELETE_HOMEWORK,
             payload: id
         });
     }, dispatch);
@@ -446,4 +447,17 @@ export const createHomeworkAndSave = (lessonId, homeworkData) => async (dispatch
             payload: res.data.data.doc
         });
     }, dispatch);
+};
+
+export const addStudent = (classData, students) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        classData.students = students.map(student => student._id);
+        const res = await homework.patch(`/classes/${classData._id}`, {...classData}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: UPDATE_CLASS,
+            payload: res.data.data.doc
+        });
+    }, dispatch)
 };

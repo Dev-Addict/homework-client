@@ -53,3 +53,5 @@ export const CREATE_HOMEWORK = 'create homework';
 export const UPDATE_HOMEWORK = 'update homework';
 
 export const DELETE_HOMEWORK = 'delete homework';
+
+export const ADD_STUDENT = 'add student';
