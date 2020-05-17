@@ -53,3 +53,11 @@ export const CREATE_HOMEWORK = 'create homework';
 export const UPDATE_HOMEWORK = 'update homework';
 
 export const DELETE_HOMEWORK = 'delete homework';
+
+export const GET_HOMEWORK_ANSWER = 'get homework answer';
+
+export const CREATE_HOMEWORK_ANSWER = 'create homework answer';
+
+export const UPDATE_HOMEWORK_ANSWER = 'update homework answer';
+
+export const DELETE_HOMEWORK_ANSWER = 'delete homework answer';

@@ -27,7 +27,10 @@ import {
     CREATE_HOMEWORK,
     UPDATE_HOMEWORK,
     DELETE_HOMEWORK,
-    ADD_STUDENT
+    GET_HOMEWORK_ANSWER,
+    CREATE_HOMEWORK_ANSWER,
+    UPDATE_HOMEWORK_ANSWER,
+    DELETE_HOMEWORK_ANSWER
 } from "./types";
 import homework from "../api/homework";
 import history from "../history";
@@ -449,19 +452,6 @@ export const createHomeworkAndSave = (lessonId, homeworkData) => async (dispatch
     }, dispatch);
 };
 
-export const addStudent = (classData, students) => async (dispatch, getState) => {
-    await createRequest(async () => {
-        classData.students = students.map(student => student._id);
-        const res = await homework.patch(`/classes/${classData._id}`, {...classData}, {
-            headers: {Authorization: getState().auth.token}
-        });
-        dispatch({
-            type: UPDATE_CLASS,
-            payload: res.data.data.doc
-        });
-    }, dispatch)
-};
-
 export const createStudentAndSave = (classId, student) => async (dispatch, getState) => {
     await createRequest(async () => {
         const classRes = await homework.get(`/classes/${classId}`);
@@ -483,4 +473,14 @@ export const createStudentAndSave = (classId, student) => async (dispatch, getSt
             payload: res.data.data.doc
         });
     }, dispatch);
+};
+
+export const getHomeworkAnswer = () => async dispatch => {
+    await createRequest(async () => {
+        const res = await homework.get('/homeworkAnswers');
+        dispatch({
+            type: GET_HOMEWORK_ANSWER,
+            payload: res.data.data.docs
+        });
+    }, dispatch)
 };
