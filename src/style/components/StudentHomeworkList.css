@@ -67,3 +67,7 @@
 .student-homework-list-danger-icon:hover {
     opacity: 1 !important;
 }
+
+.student-homework-list-done-tr {
+    background-color: var(--color-jet);
+}

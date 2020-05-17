@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
-import {deleteHomework, getHomework, getUsers, getClasses, getLessons} from "../actions";
+import {deleteHomework, getHomework, getUsers, getClasses, getLessons, getHomeworkAnswers} from "../actions";
 import '../style/components/StudentHomeworkList.css';
 
 const StudentHomeworkList = props => {
@@ -11,25 +11,37 @@ const StudentHomeworkList = props => {
         props.getUsers();
         props.getClasses();
         props.getLessons();
+        props.getHomeworkAnswers();
     }, []);
 
     const getUsername = id => (props.users[props.users.findIndex(user => user._id === id)] || {}).username;
 
-    const renderHomework = props.homework.map(homework => (
-        <tr>
-            <td>{homework._id}</td>
-            <td>{homework.description}</td>
-            <td>{homework.startAt}</td>
-            <td>{homework.endAt}</td>
-            <td>{homework.sendAfter ? 'Yes' : 'No'}</td>
-            <td>{getUsername(homework.teacher)}</td>
-            <td>
-                <Link to={`/create-homework-answer/${homework._id}`}>
-                    <i className="location arrow icon student-homework-list-icon"/>
-                </Link>
-            </td>
-        </tr>
-    ));
+    const renderHomework = props.homework.map(homework => {
+        let homeworkAnswer;
+
+        props.homeworkAnswers.forEach(homeworkAnswerD => {
+                if (homeworkAnswerD.homework === homework._id) {
+                    homeworkAnswer = homeworkAnswerD;
+                }
+            }
+        );
+
+        return (
+            <tr className={homeworkAnswer?'student-homework-list-done-tr':''}>
+                <td>{homework._id}</td>
+                <td>{homework.description}</td>
+                <td>{homework.startAt}</td>
+                <td>{homework.endAt}</td>
+                <td>{homework.sendAfter ? 'Yes' : 'No'}</td>
+                <td>{getUsername(homework.teacher)}</td>
+                <td>
+                    <Link to={`/create-homework-answer/${homework._id}`}>
+                        <i className="location arrow icon student-homework-list-icon"/>
+                    </Link>
+                </td>
+            </tr>
+        )
+    });
 
     return (
         <div className="student-homework-list-container">
@@ -93,7 +105,8 @@ const mapStateToProps = (state, props) => {
 
     return {
         homework,
-        users: state.users
+        users: state.users,
+        homeworkAnswers: state.homeworkAnswers
     };
 };
 
@@ -102,5 +115,6 @@ export default connect(mapStateToProps, {
     getHomework,
     getUsers,
     getClasses,
-    getLessons
+    getLessons,
+    getHomeworkAnswers
 })(StudentHomeworkList);
