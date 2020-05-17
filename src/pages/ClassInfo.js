@@ -7,6 +7,7 @@ import ClassButtons from "../components/ClassButtons";
 import LessonsList from "../components/LessonsList";
 import history from "../history";
 import '../style/pages/ClassInfo.css';
+import UsersList from "../components/UsersList";
 
 const ClassInfo = props => {
     const {id} = useParams();
@@ -43,6 +44,7 @@ const ClassInfo = props => {
             <h2 className="class-info-header">{classData.name}<sub>({classData._id})</sub></h2>
             <ClassButtons id={classData._id}/>
             <LessonsList classData={classData._id}/>
+            <UsersList students={classData.students}/>
         </div>
     );
 };

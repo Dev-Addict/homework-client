@@ -50,8 +50,13 @@ const UsersList = props => {
     );
 };
 
-const mapStateToProps = state => {
-    const users = state.users.filter(user => user.manager === state.auth.data.user._id);
+const mapStateToProps = (state, props) => {
+    let users;
+    if (props.students) {
+        users = state.users.filter(user => props.students.includes(user._id));
+    } else {
+        users = state.users.filter(user => user.manager === state.auth.data.user._id);
+    }
     return {
         users
     };

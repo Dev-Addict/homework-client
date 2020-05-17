@@ -65,27 +65,31 @@ const StudentHomeworkList = props => {
 const mapStateToProps = (state, props) => {
     let classData;
 
-    if (!classData) {
-        return {
-            homework: []
-        };
-    }
-
     for (let i = 0; i < state.classes.length; i++) {
         if (state.classes[i].students.includes(state.auth.data.user._id)) {
             classData = state.classes[i];
         }
     }
 
+    if (!classData) {
+        return {
+            homework: []
+        };
+    }
+
     const homework = [];
 
     classData.lessons.forEach(lesson => {
-        lesson.homework.forEach(homeworkD => {
-            state.homework.forEach(homeworkD2 => {
-                if (homeworkD2._id === homeworkD) {
-                    homework.push(homeworkD2);
-                }
-            })
+        state.lessons.forEach(lessonData => {
+            if (lesson === lessonData._id) {
+                lessonData.homework.forEach(homeworkD => {
+                    state.homework.forEach(homeworkD2 => {
+                        if (homeworkD2._id === homeworkD) {
+                            homework.push(homeworkD2);
+                        }
+                    })
+                })
+            }
         })
     });
 
