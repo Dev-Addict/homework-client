@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {useParams} from 'react-router-dom';
 
 import HomeworkForm, {formFields} from "../components/HomeworkForm";
-import {createHomeWorkAndSave} from "../actions";
+import {createHomeworkAndSave} from "../actions";
 import history from "../history";
 
 const CreateHomework = props => {
@@ -13,15 +13,18 @@ const CreateHomework = props => {
         return (<div/>);
     }
 
-    if (['teacher', 'student'].includes(props.auth.data.user.rote)) {
+    if (['student'].includes(props.auth.data.user.rote)) {
         history.push('/dashboard');
         return (<div/>);
     }
 
     const onSubmit = formValues => {
         props.createHomeworkAndSave(lesson, {
-            name: formValues[formFields.name] || undefined,
-            teacher: formValues[formFields.teacher] || undefined
+            description: formValues[formFields.description] || undefined,
+            startAt: formValues.startAt,
+            endAt: formValues.endAt,
+            sendAfter: formValues[formFields.sendAfter],
+            teacher: props.auth.data.user._id
         });
     };
 
@@ -37,4 +40,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {createHomeWorkAndSave})(CreateHomework);
+export default connect(mapStateToProps, {createHomeworkAndSave})(CreateHomework);

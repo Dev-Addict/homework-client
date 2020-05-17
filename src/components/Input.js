@@ -3,7 +3,7 @@ import React from "react";
 import '../style/components/Input.css';
 
 const Input = ({input, meta, type}) => {
-    const createLabel = name => name.charAt(0) + name.substr(1).toLowerCase();
+    const createLabel = name => name.replace(/_/g, ' ').charAt(0) + name.replace(/_/g, ' ').substr(1).toLowerCase();
     return (
         <div>
             <label className="input-input-label">{createLabel(input.name)}</label>

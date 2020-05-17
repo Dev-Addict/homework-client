@@ -1,5 +1,6 @@
 import React, {useLayoutEffect} from "react";
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import {getClasses, getLessons} from "../actions";
 import '../style/components/TeacherDashboard.css';
@@ -11,10 +12,12 @@ const TeacherDashboard = props => {
     }, []);
 
     const renderTeacherCards = () => props.classes.map((classData, index) => (
-        <div className="teacher-dashboard-teacher-card">
-            <div className="teacher-dashboard-teacher-card-class">Class: {classData.name}</div>
-            <div className="teacher-dashboard-teacher-card-lesson">lesson: {props.lessons[index].name}</div>
-        </div>
+        <Link to={`/create-homework/${props.lessons[index]._id}`}>
+            <div className="teacher-dashboard-teacher-card">
+                <div className="teacher-dashboard-teacher-card-class">Class: {classData.name}</div>
+                <div className="teacher-dashboard-teacher-card-lesson">lesson: {props.lessons[index].name}</div>
+            </div>
+        </Link>
     ));
 
     return (

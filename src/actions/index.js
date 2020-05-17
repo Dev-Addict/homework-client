@@ -431,7 +431,7 @@ export const deleteHomework = id => async (dispatch, getState) => {
     }, dispatch);
 };
 
-export const createHomeWorkAndSave = (lessonId, homeworkData) => async (dispatch, getState) => {
+export const createHomeworkAndSave = (lessonId, homeworkData) => async (dispatch, getState) => {
     await createRequest(async () => {
         const lessonRes = await homework.get(`/lessons/${lessonId}`);
         const homeworkRes = await homework.post('/homework', {...homeworkData}, {
