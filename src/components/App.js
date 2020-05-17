@@ -21,6 +21,7 @@ import ClassInfo from "../pages/ClassInfo";
 import CreateLesson from "../pages/CreateLesson";
 import EditLesson from "../pages/EditLesson";
 import CreateHomework from "../pages/CreateHomework";
+import LessonInfo from "../pages/LessonInfo";
 import history from "../history";
 import '../style/components/App.css';
 
@@ -81,6 +82,9 @@ const App = () => {
                     </Route>
                     <Route path="/create-homework/:lesson" exact>
                         <CreateHomework/>
+                    </Route>
+                    <Route path="/lesson/:id" exact>
+                        <LessonInfo/>
                     </Route>
                 </Switch>
                 <Footer/>

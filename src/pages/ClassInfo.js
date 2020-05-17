@@ -6,9 +6,9 @@ import {getClasses, updateGrade} from "../actions";
 import ClassButtons from "../components/ClassButtons";
 import LessonsList from "../components/LessonsList";
 import history from "../history";
-import '../style/pages/GradeInfo.css';
+import '../style/pages/ClassInfo.css';
 
-const SchoolInfo = props => {
+const ClassInfo = props => {
     const {id} = useParams();
 
     if (!props.auth.isSigned) {
@@ -39,8 +39,8 @@ const SchoolInfo = props => {
     }
 
     return (
-        <div className="grade-info-container">
-            <h2 className="grade-info-header">{classData.name}<sub>({classData._id})</sub></h2>
+        <div className="class-info-container">
+            <h2 className="class-info-header">{classData.name}<sub>({classData._id})</sub></h2>
             <ClassButtons id={classData._id}/>
             <LessonsList classData={classData._id}/>
         </div>
@@ -54,4 +54,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {getClasses, updateGrade})(SchoolInfo);
+export default connect(mapStateToProps, {getClasses, updateGrade})(ClassInfo);

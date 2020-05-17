@@ -1,0 +1,10 @@
+.class-info-container {
+    padding: 20px;
+    color: var(--color-ghost-white);
+}
+
+.class-info-header {
+    background-color: var(--color-jet-transparent-low);
+    padding: 10px;
+    border-radius: 10px;
+}
