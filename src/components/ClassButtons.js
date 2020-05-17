@@ -10,6 +10,9 @@ const AdminButtons = props => {
             <Link to={`/create-lesson/${props.id}`}>
                 <button className="class-buttons-button">create Lesson</button>
             </Link>
+            <Link to="/create/student">
+                <button className="admin-buttons-button">create Student</button>
+            </Link>
         </div>
     );
 };

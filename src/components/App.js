@@ -42,6 +42,9 @@ const App = () => {
                     <Route path="/dashboard" exact>
                         <Dashboard/>
                     </Route>
+                    <Route path="/create-student/:class" exact>
+                        <CreateUser rote="student"/>
+                    </Route>
                     <Route path="/create/:rote" exact>
                         <CreateUser/>
                     </Route>

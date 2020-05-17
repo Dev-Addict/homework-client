@@ -461,3 +461,26 @@ export const addStudent = (classData, students) => async (dispatch, getState) =>
         });
     }, dispatch)
 };
+
+export const createStudentAndSave = (classId, student) => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const classRes = await homework.get(`/classes/${classId}`);
+        const studentRes = await homework.post('/users', {...student}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: CREATE_USER,
+            payload: studentRes.data.data.doc
+        });
+        const classData = classRes.data.data.doc;
+        classData.students.push(studentRes.data.data.doc._id);
+        const res = await homework.patch(`/classes/${classId}`, {...classData}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        history.goBack();
+        dispatch({
+            type: UPDATE_CLASS,
+            payload: res.data.data.doc
+        });
+    }, dispatch);
+};

@@ -13,9 +13,6 @@ const ManagerButtons = props => {
             <Link to="/create/teacher">
                 <button className="admin-buttons-button">create Teacher</button>
             </Link>
-            <Link to="/create/student">
-                <button className="admin-buttons-button">create Student</button>
-            </Link>
         </div>
     );
 };
