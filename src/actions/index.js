@@ -475,12 +475,25 @@ export const createStudentAndSave = (classId, student) => async (dispatch, getSt
     }, dispatch);
 };
 
-export const getHomeworkAnswer = () => async dispatch => {
+export const getHomeworkAnswers = () => async dispatch => {
     await createRequest(async () => {
         const res = await homework.get('/homeworkAnswers');
         dispatch({
             type: GET_HOMEWORK_ANSWER,
             payload: res.data.data.docs
         });
+    }, dispatch)
+};
+
+export const createHomeworkAnswer = homeworkAnswer => async (dispatch, getState) => {
+    await createRequest(async () => {
+        const res = await homework.post('/homeworkAnswers', {...homeworkAnswer}, {
+            headers: {Authorization: getState().auth.token}
+        });
+        dispatch({
+            type: CREATE_HOMEWORK_ANSWER,
+            payload: res.data.data.doc
+        });
+        history.goBack();
     }, dispatch)
 };
