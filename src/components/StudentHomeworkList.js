@@ -1,8 +1,16 @@
-import React, {useEffect} from "react";
+import React, {useEffect, Fragment} from "react";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
-import {deleteHomework, getHomework, getUsers, getClasses, getLessons, getHomeworkAnswers} from "../actions";
+import {
+    deleteHomework,
+    getHomework,
+    getUsers,
+    getClasses,
+    getLessons,
+    getHomeworkAnswers,
+    deleteHomeworkAnswer
+} from "../actions";
 import '../style/components/StudentHomeworkList.css';
 
 const StudentHomeworkList = props => {
@@ -37,9 +45,13 @@ const StudentHomeworkList = props => {
                 <td>
                     {
                         homeworkAnswer ?
-                            <Link to={`/edit-homework-answer/${homeworkAnswer._id}`}>
-                                <i className="edit outline icon student-homework-list-icon"/>
-                            </Link> :
+                            <Fragment>
+                                <Link to={`/edit-homework-answer/${homeworkAnswer._id}`}>
+                                    <i className="edit outline icon student-homework-list-icon"/>
+                                </Link>
+                                <i className="trash alternate outline icon student-homework-list-danger-icon"
+                                   onClick={() => props.deleteHomeworkAnswer(homeworkAnswer._id)}/>
+                            </Fragment> :
                             <Link to={`/create-homework-answer/${homework._id}`}>
                                 <i className="location arrow icon student-homework-list-icon"/>
                             </Link>
@@ -117,10 +129,10 @@ const mapStateToProps = (state, props) => {
 };
 
 export default connect(mapStateToProps, {
-    deleteHomework,
     getHomework,
     getUsers,
     getClasses,
     getLessons,
-    getHomeworkAnswers
+    getHomeworkAnswers,
+    deleteHomeworkAnswer
 })(StudentHomeworkList);
