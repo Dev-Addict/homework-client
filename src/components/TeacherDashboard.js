@@ -12,7 +12,7 @@ const TeacherDashboard = props => {
     }, []);
 
     const renderTeacherCards = () => props.classes.map((classData, index) => (
-        <Link to={`/create-homework/${props.lessons[index]._id}`}>
+        <Link to={`/lesson/${props.lessons[index]._id}`}>
             <div className="teacher-dashboard-teacher-card">
                 <div className="teacher-dashboard-teacher-card-class">Class: {classData.name}</div>
                 <div className="teacher-dashboard-teacher-card-lesson">lesson: {props.lessons[index].name}</div>

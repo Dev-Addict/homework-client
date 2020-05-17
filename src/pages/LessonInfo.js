@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import LessonButtons from "../components/LessonButtons";
 import {getLessons} from "../actions";
 import history from "../history";
 import '../style/pages/LessonInfo.css';
@@ -39,6 +40,7 @@ const SchoolInfo = props => {
     return (
         <div className="lesson-info-container">
             <h2 className="lesson-info-header">{lesson.name}<sub>({lesson._id})</sub></h2>
+            <LessonButtons id={lesson._id}/>
         </div>
     );
 };
