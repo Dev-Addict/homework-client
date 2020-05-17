@@ -113,7 +113,6 @@ export const deleteUser = id => async (dispatch, getState) => {
             type: DELETE_USER,
             payload: id
         });
-        history.goBack();
     }, dispatch);
 };
 
@@ -162,7 +161,6 @@ export const deleteSchool = id => async (dispatch, getState) => {
             type: DELETE_SCHOOL,
             payload: id
         });
-        history.goBack();
     }, dispatch);
 };
 
@@ -211,7 +209,6 @@ export const deleteGrade = id => async (dispatch, getState) => {
             type: DELETE_GRADE,
             payload: id
         });
-        history.goBack();
     }, dispatch);
 };
 
@@ -283,7 +280,6 @@ export const deleteClass = id => async (dispatch, getState) => {
             type: DELETE_CLASS,
             payload: id
         });
-        history.goBack();
     }, dispatch);
 };
 
@@ -355,7 +351,6 @@ export const deleteLesson = id => async (dispatch, getState) => {
             type: DELETE_LESSON,
             payload: id
         });
-        history.goBack();
     }, dispatch);
 };
 
@@ -427,7 +422,6 @@ export const deleteHomework = id => async (dispatch, getState) => {
             type: DELETE_LESSON,
             payload: id
         });
-        history.goBack();
     }, dispatch);
 };
 
