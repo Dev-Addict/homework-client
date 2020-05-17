@@ -3,11 +3,11 @@ import {connect} from "react-redux";
 import {useParams} from 'react-router-dom';
 
 import HomeworkAnswerForm from "../components/HomeworkAnswerForm";
-import {createHomeworkAnswer} from "../actions";
+import {updateHomeworkAnswer} from "../actions";
 import history from "../history";
 
 const CreateHomeworkAnswer = props => {
-    const {homework} = useParams();
+    const {id} = useParams();
     if (!props.auth.isSigned) {
         history.push('/');
         return (<div/>);
@@ -16,9 +16,8 @@ const CreateHomeworkAnswer = props => {
     const onSubmit = file => {
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('homework', homework);
 
-        props.createHomeworkAnswer(formData);
+        props.updateHomeworkAnswer(formData, id);
     };
 
     return (
@@ -33,4 +32,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {createHomeworkAnswer})(CreateHomeworkAnswer);
+export default connect(mapStateToProps, {updateHomeworkAnswer})(CreateHomeworkAnswer);

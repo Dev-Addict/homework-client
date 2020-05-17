@@ -69,5 +69,5 @@
 }
 
 .student-homework-list-done-tr {
-    background-color: var(--color-jet);
+    background-color: var(--color-jet) !important;
 }

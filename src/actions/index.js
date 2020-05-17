@@ -503,7 +503,7 @@ export const createHomeworkAnswer = homeworkAnswer => async (dispatch, getState)
 
 export const updateHomeworkAnswer = (homeworkAnswer, id) => async (dispatch, getState) => {
     await createRequest(async () => {
-        const res = await homework.patch(`/homeworkAnswers/${id}`, {...homeworkAnswer}, {
+        const res = await homework.patch(`/homeworkAnswers/${id}`, homeworkAnswer, {
             headers: {Authorization: getState().auth.token}
         });
         dispatch({

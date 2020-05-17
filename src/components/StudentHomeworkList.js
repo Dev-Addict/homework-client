@@ -27,7 +27,7 @@ const StudentHomeworkList = props => {
         );
 
         return (
-            <tr className={homeworkAnswer?'student-homework-list-done-tr':''}>
+            <tr className={homeworkAnswer ? 'student-homework-list-done-tr' : ''}>
                 <td>{homework._id}</td>
                 <td>{homework.description}</td>
                 <td>{homework.startAt}</td>
@@ -35,9 +35,15 @@ const StudentHomeworkList = props => {
                 <td>{homework.sendAfter ? 'Yes' : 'No'}</td>
                 <td>{getUsername(homework.teacher)}</td>
                 <td>
-                    <Link to={`/create-homework-answer/${homework._id}`}>
-                        <i className="location arrow icon student-homework-list-icon"/>
-                    </Link>
+                    {
+                        homeworkAnswer ?
+                            <Link to={`/edit-homework-answer/${homeworkAnswer._id}`}>
+                                <i className="edit outline icon student-homework-list-icon"/>
+                            </Link> :
+                            <Link to={`/create-homework-answer/${homework._id}`}>
+                                <i className="location arrow icon student-homework-list-icon"/>
+                            </Link>
+                    }
                 </td>
             </tr>
         )
