@@ -95,7 +95,7 @@ const App = () => {
                         <EditHomework/>
                     </Route>
                     <Route path="/create-homework-answer/:homework" exact>
-                        <CreateHomework/>
+                        <CreateHomeworkAnswer/>
                     </Route>
                 </Switch>
                 <Footer/>

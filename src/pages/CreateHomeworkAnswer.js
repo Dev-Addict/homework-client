@@ -6,17 +6,18 @@ import HomeworkAnswerForm , {formFields} from "../components/HomeworkAnswerForm"
 import {createHomeworkAnswer} from "../actions";
 import history from "../history";
 
-const CreateGrade = props => {
+const CreateHomeworkAnswer = props => {
     const {homework} = useParams();
     if (!props.auth.isSigned) {
         history.push('/');
         return (<div/>);
     }
 
-    const onSubmit = formValues => {
-        // props.createHomeworkAnswer({
-        //     homework
-        // });
+    const onSubmit = file => {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        props.createHomeworkAnswer(formData);
     };
 
     return (
@@ -31,4 +32,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {createHomeworkAnswer})(CreateGrade);
+export default connect(mapStateToProps, {createHomeworkAnswer})(CreateHomeworkAnswer);

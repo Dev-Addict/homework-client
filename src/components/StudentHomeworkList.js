@@ -24,19 +24,17 @@ const StudentHomeworkList = props => {
             <td>{homework.sendAfter ? 'Yes' : 'No'}</td>
             <td>{getUsername(homework.teacher)}</td>
             <td>
-                <Link to={`/edit-homework/${homework._id}`}>
-                    <i className="edit outline icon homework-list-icon"/>
+                <Link to={`/create-homework-answer/${homework._id}`}>
+                    <i className="location arrow icon student-homework-list-icon"/>
                 </Link>
-                <i className="trash alternate outline icon homework-list-danger-icon"
-                   onClick={event => props.deleteHomework(homework._id)}/>
             </td>
         </tr>
     ));
 
     return (
-        <div className="homework-list-container">
-            <div className="homework-list-header">Homework</div>
-            <div className="homework-list-table-header-container">
+        <div className="student-homework-list-container">
+            <div className="student-homework-list-header">Homework</div>
+            <div className="student-homework-list-table-header-container">
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <thead>
                     <tr>
@@ -51,7 +49,7 @@ const StudentHomeworkList = props => {
                     </thead>
                 </table>
             </div>
-            <div className="homework-list-table-body-container">
+            <div className="student-homework-list-table-body-container">
                 <table cellPadding="0" cellSpacing="0" border="0">
                     <tbody>
                     {renderHomework}

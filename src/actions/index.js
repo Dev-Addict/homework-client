@@ -487,8 +487,11 @@ export const getHomeworkAnswers = () => async dispatch => {
 
 export const createHomeworkAnswer = homeworkAnswer => async (dispatch, getState) => {
     await createRequest(async () => {
-        const res = await homework.post('/homeworkAnswers', {...homeworkAnswer}, {
-            headers: {Authorization: getState().auth.token}
+        const res = await homework.post('/homeworkAnswers', homeworkAnswer, {
+            headers: {
+                Authorization: getState().auth.token,
+                'content-type': 'multipart/form-data'
+            }
         });
         dispatch({
             type: CREATE_HOMEWORK_ANSWER,
