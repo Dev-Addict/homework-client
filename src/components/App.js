@@ -23,6 +23,7 @@ import EditLesson from "../pages/EditLesson";
 import CreateHomework from "../pages/CreateHomework";
 import LessonInfo from "../pages/LessonInfo";
 import EditHomework from "../pages/EditHomework";
+import CreateHomeworkAnswer from "../pages/CreateHomeworkAnswer";
 import history from "../history";
 import '../style/components/App.css';
 
@@ -92,6 +93,9 @@ const App = () => {
                     </Route>
                     <Route path="/edit-homework/:id" exact>
                         <EditHomework/>
+                    </Route>
+                    <Route path="/create-homework-answer/:homework" exact>
+                        <CreateHomework/>
                     </Route>
                 </Switch>
                 <Footer/>
