@@ -22,6 +22,7 @@ import CreateLesson from "../pages/CreateLesson";
 import EditLesson from "../pages/EditLesson";
 import CreateHomework from "../pages/CreateHomework";
 import LessonInfo from "../pages/LessonInfo";
+import EditHomework from "../pages/EditHomework";
 import history from "../history";
 import '../style/components/App.css';
 
@@ -85,6 +86,9 @@ const App = () => {
                     </Route>
                     <Route path="/lesson/:id" exact>
                         <LessonInfo/>
+                    </Route>
+                    <Route path="/edit-homework/:id" exact>
+                        <EditHomework/>
                     </Route>
                 </Switch>
                 <Footer/>
