@@ -42,7 +42,7 @@ const App = () => {
                     <Route path="/dashboard" exact>
                         <Dashboard/>
                     </Route>
-                    <Route path="/create-student/:class" exact>
+                    <Route path="/create-student/:classId" exact>
                         <CreateUser rote="student"/>
                     </Route>
                     <Route path="/create/:rote" exact>

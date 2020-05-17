@@ -3,11 +3,14 @@ import {connect} from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import UserForm, {formFields} from "../components/UserForm";
-import {createUser} from "../actions";
+import {createUser, createStudentAndSave} from "../actions";
 import history from "../history";
 
 const CreateUser = props => {
-    const {rote} = useParams();
+    let {rote, classId} = useParams();
+    if (classId) {
+        rote = props.rote;
+    }
     if (!props.auth.isSigned) {
         history.push('/');
         return (<div/>);
@@ -19,12 +22,21 @@ const CreateUser = props => {
     }
 
     const onSubmit = formValues => {
-        props.createUser({
-            username: formValues[formFields.username] || undefined,
-            password: formValues[formFields.password] || undefined,
-            rote: rote,
-            name: formValues[formFields.name] || undefined
-        });
+        if (classId) {
+            props.createStudentAndSave(classId, {
+                username: formValues[formFields.username] || undefined,
+                password: formValues[formFields.password] || undefined,
+                rote: rote,
+                name: formValues[formFields.name] || undefined
+            });
+        } else {
+            props.createUser({
+                username: formValues[formFields.username] || undefined,
+                password: formValues[formFields.password] || undefined,
+                rote: rote,
+                name: formValues[formFields.name] || undefined
+            });
+        }
     };
 
     return (
@@ -39,4 +51,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {createUser})(CreateUser);
+export default connect(mapStateToProps, {createUser, createStudentAndSave})(CreateUser);
