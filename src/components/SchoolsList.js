@@ -52,7 +52,7 @@ const SchoolsList = props => {
 
 const mapStateToProps = state => {
     return {
-        schools: state.schools
+        schools: state.schools.filter(school => school.manager === state.auth.data.user._id)
     };
 };
 
