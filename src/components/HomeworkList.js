@@ -19,7 +19,7 @@ const HomeworkList = props => {
             <td>{homework.description}</td>
             <td>{new Date(homework.startAt + (new Date().getTimezoneOffset() * -60 * 1000)).toLocaleString()}</td>
             <td>{new Date(homework.endAt + (new Date().getTimezoneOffset() * -60 * 1000)).toLocaleString()}</td>
-            <td>{homework.sendAfter?'Yes':'No'}</td>
+            <td>{homework.sendAfter ? 'Yes' : 'No'}</td>
             <td>{getUsername(homework.teacher)}</td>
             <td>
                 <Link to={`/edit-homework/${homework._id}`}>
@@ -27,6 +27,9 @@ const HomeworkList = props => {
                 </Link>
                 <i className="trash alternate outline icon homework-list-danger-icon"
                    onClick={event => props.deleteHomework(homework._id)}/>
+                <Link to={`/homework-answers/${homework._id}`}>
+                    <i className="info circle icon homework-list-icon"/>
+                </Link>
             </td>
         </tr>
     ));
@@ -63,7 +66,7 @@ const HomeworkList = props => {
 const mapStateToProps = (state, props) => {
     let lesson;
 
-    for(let i = 0; i < state.lessons.length; i++) {
+    for (let i = 0; i < state.lessons.length; i++) {
         if (state.lessons[i]._id === props.lesson) {
             lesson = state.lessons[i];
         }

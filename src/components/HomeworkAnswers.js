@@ -1,6 +1,5 @@
-import React, {useEffect} from "react";
+import React, {useEffect, Fragment} from "react";
 import {connect} from "react-redux";
-import {Link} from "react-router-dom";
 
 import {getHomework, getClasses, getUsers, getLessons, getHomeworkAnswers} from "../actions";
 import '../style/components/HomeworkAnswers.css';
@@ -23,11 +22,15 @@ const HomeworkList = props => {
                 <td>{student._id}</td>
                 <td>{student.name}</td>
                 <td>{student.username}</td>
-                <td>{homeworkAnswer?homeworkAnswer.requestAt + (new Date().getTimezoneOffset() * -60 * 1000):'-'}</td>
+                <td>{homeworkAnswer ? new Date(homeworkAnswer.requestAt + (new Date().getTimezoneOffset() * -60 * 1000)).toLocaleString() : '-'}</td>
                 <td>
-                    <a href={`http://127.0.0.1:3001/api/v1/download/homeworkAnswers/${homeworkAnswer.file}`}>
-                        <i className="download icon homework-answers-icon"/>
-                    </a>
+                    {
+                        homeworkAnswer ?
+                            <a href={`http://127.0.0.1:3001/api/v1/download/homeworkAnswers/${homeworkAnswer.file}`}>
+                                <i className="download icon homework-answers-icon"/>
+                            </a> :
+                            <Fragment/>
+                    }
                 </td>
             </tr>
         )
@@ -64,7 +67,7 @@ const mapStateToProps = (state, props) => {
     let lesson;
 
     for (let i = 0; i < state.lessons.length; i++) {
-        if (state.lessons[i].includes(props.homework)) {
+        if (state.lessons[i].homework.includes(props.homework)) {
             lesson = state.lessons[i];
         }
     }
@@ -78,7 +81,7 @@ const mapStateToProps = (state, props) => {
     let classData;
 
     for (let i = 0; i < state.classes.length; i++) {
-        if (state.classes[i].includes(lesson._id)) {
+        if (state.classes[i].lessons.includes(lesson._id)) {
             classData = state.classes[i];
         }
     }

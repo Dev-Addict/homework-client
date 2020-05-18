@@ -25,6 +25,7 @@ import LessonInfo from "../pages/LessonInfo";
 import EditHomework from "../pages/EditHomework";
 import CreateHomeworkAnswer from "../pages/CreateHomeworkAnswer";
 import EditHomeworkAnswer from "../pages/EditHomeworkAnswer";
+import HomeworkAnswersPage from "../pages/HomeworkAnswers";
 import history from "../history";
 import '../style/components/App.css';
 
@@ -100,6 +101,9 @@ const App = () => {
                     </Route>
                     <Route path="/edit-homework-answer/:id" exact>
                         <EditHomeworkAnswer/>
+                    </Route>
+                    <Route path="/homework-answers/:homework" exact>
+                        <HomeworkAnswersPage/>
                     </Route>
                 </Switch>
                 <Footer/>
